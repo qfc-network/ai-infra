@@ -34,6 +34,8 @@
 - [Open Source Week — FlashMLA 源码走读](./deepseek/open-source-week/flash-mla/) — seesaw 调度、FP8 稀疏 decode
 - [Open Source Week — DeepEP 源码走读](./deepseek/open-source-week/deep-ep/) — 专家并行 all-to-all、IBGDA 低延迟
 - [Open Source Week — DeepGEMM 源码走读](./deepseek/open-source-week/deep-gemm/) — JIT FP8/BF16 GEMM、MoE 三种布局、V3.2 indexer
+- [Open Source Week — DualPipe 源码走读](./deepseek/open-source-week/dualpipe/) — 双向流水线调度，bubble 减半
+- [Open Source Week — 3FS 源码走读](./deepseek/open-source-week/3fs/) — RDMA 原生分布式 FS；CRAQ + FDB + USRBIO
 
 ### Meta
 - [Llama 3 Herd of Models](./meta/llama3/) — 405B dense、16k H100、4D 并行

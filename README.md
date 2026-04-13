@@ -34,6 +34,8 @@ Every paper gets both an English (`en.md`) and Chinese (`zh.md`) write-up using 
 - [Open Source Week — FlashMLA walkthrough](./deepseek/open-source-week/flash-mla/) — seesaw schedule, FP8 sparse decode
 - [Open Source Week — DeepEP walkthrough](./deepseek/open-source-week/deep-ep/) — expert-parallel all-to-all, IBGDA low-latency
 - [Open Source Week — DeepGEMM walkthrough](./deepseek/open-source-week/deep-gemm/) — JIT FP8/BF16 GEMM, MoE layouts, V3.2 indexer
+- [Open Source Week — DualPipe walkthrough](./deepseek/open-source-week/dualpipe/) — bidirectional pipeline schedule; halves bubbles
+- [Open Source Week — 3FS walkthrough](./deepseek/open-source-week/3fs/) — RDMA-native distributed FS; CRAQ + FDB + USRBIO
 
 ### Meta
 - [Llama 3 Herd of Models](./meta/llama3/) — 405B dense, 16k H100s, 4D parallelism

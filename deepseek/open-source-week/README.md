@@ -9,8 +9,8 @@ Source-level walkthroughs of the infra that DeepSeek open-sourced during Open So
 | FlashMLA — MLA attention kernels (SM90/SM100) | [en](./flash-mla/en.md) | [zh](./flash-mla/zh.md) | ✓ |
 | DeepEP — expert-parallel all-to-all | [en](./deep-ep/en.md) | [zh](./deep-ep/zh.md) | ✓ |
 | DeepGEMM — FP8 GEMM with fine-grained scaling | [en](./deep-gemm/en.md) | [zh](./deep-gemm/zh.md) | ✓ |
-| 3FS — parallel file system | — | — | planned |
-| DualPipe — bidirectional pipeline schedule | — | — | planned |
+| DualPipe — bidirectional pipeline schedule | [en](./dualpipe/en.md) | [zh](./dualpipe/zh.md) | ✓ |
+| 3FS — distributed file system | [en](./3fs/en.md) | [zh](./3fs/zh.md) | ✓ |
 
 ## Upstream repos
 
