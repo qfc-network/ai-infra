@@ -30,6 +30,8 @@
 - [SGLang](./foundational/sglang/) — RadixAttention 前缀缓存；多 call LLM 程序前端 DSL
 - [权重量化 — GPTQ & AWQ](./foundational/weight-quantization/) — INT4 训练后；Hessian vs 激活感知
 - [SmoothQuant](./foundational/smoothquant/) — W8A8；激活到权重的 outlier 迁移
+- [RLHF / InstructGPT](./foundational/rlhf/) — 三阶段 SFT+RM+PPO；后训练的地基
+- [DPO](./foundational/dpo/) — RLHF 折叠为单次监督步；更简单的默认
 
 ### DeepSeek
 - [V3 Technical Report](./deepseek/v3-tech-report/) — FP8 训练、DualPipe、671B MoE

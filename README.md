@@ -30,6 +30,8 @@ Every paper gets both an English (`en.md`) and Chinese (`zh.md`) write-up using 
 - [SGLang](./foundational/sglang/) — RadixAttention prefix caching; frontend DSL for multi-call LLM programs
 - [Weight Quantization — GPTQ & AWQ](./foundational/weight-quantization/) — INT4 post-training; Hessian vs activation-aware
 - [SmoothQuant](./foundational/smoothquant/) — W8A8; activation-to-weight outlier migration
+- [RLHF / InstructGPT](./foundational/rlhf/) — three-stage SFT+RM+PPO; the post-training foundation
+- [DPO](./foundational/dpo/) — collapse RLHF into one supervised step; the simpler default
 
 ### DeepSeek
 - [V3 Technical Report](./deepseek/v3-tech-report/) — FP8 training, DualPipe, MoE at 671B
