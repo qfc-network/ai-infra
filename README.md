@@ -56,7 +56,8 @@ Every paper gets both an English (`en.md`) and Chinese (`zh.md`) write-up using 
 - [GSPMD](./google/gspmd/) — XLA compiler pass for auto-parallelization; sharding as a type
 
 ### Anthropic
-- _Public infra writings_ — planned
+- [Building Effective Agents](./anthropic/building-effective-agents/) — workflow vs agent, five workflow patterns
+- [Model Context Protocol (MCP)](./anthropic/mcp/) — LSP for LLMs; tools / resources / prompts via JSON-RPC
 
 ## Contributing
 

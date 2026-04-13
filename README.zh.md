@@ -56,7 +56,8 @@
 - [GSPMD](./google/gspmd/) — XLA 自动并行 pass；sharding 作为类型
 
 ### Anthropic
-- _公开 infra 材料_ — 待写
+- [Building Effective Agents](./anthropic/building-effective-agents/) — workflow 与 agent 的区分、五种 workflow 模式
+- [Model Context Protocol (MCP)](./anthropic/mcp/) — LLM 的 LSP；tools / resources / prompts over JSON-RPC
 
 ## 贡献
 
