@@ -26,6 +26,8 @@
 - [ZeRO / FSDP](./foundational/zero-fsdp/) — 切分式数据并行；与 Megatron 正交
 - [Speculative Decoding](./foundational/speculative-decoding/) — draft + verify；无损 2–4× 解码加速
 - [Ring Attention / Context Parallelism](./foundational/ring-attention/) — 序列切分，1M+ 精确 attention
+- [DistServe](./foundational/distserve/) — prefill/decode 解耦；goodput 作为正确度量
+- [SGLang](./foundational/sglang/) — RadixAttention 前缀缓存；多 call LLM 程序前端 DSL
 
 ### DeepSeek
 - [V3 Technical Report](./deepseek/v3-tech-report/) — FP8 训练、DualPipe、671B MoE
