@@ -32,6 +32,8 @@
 - [SmoothQuant](./foundational/smoothquant/) — W8A8；激活到权重的 outlier 迁移
 - [RLHF / InstructGPT](./foundational/rlhf/) — 三阶段 SFT+RM+PPO；后训练的地基
 - [DPO](./foundational/dpo/) — RLHF 折叠为单次监督步；更简单的默认
+- [GPU 互联 primer](./foundational/gpu-interconnect/) — NVLink、NVSwitch、RDMA、IBGDA；其他条目默认的 fabric
+- [Mamba 与状态空间模型](./foundational/mamba-ssm/) — 线性时间、常量显存 decode；与 attention 的混合
 
 ### DeepSeek
 - [V3 Technical Report](./deepseek/v3-tech-report/) — FP8 训练、DualPipe、671B MoE

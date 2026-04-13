@@ -32,6 +32,8 @@ Every paper gets both an English (`en.md`) and Chinese (`zh.md`) write-up using 
 - [SmoothQuant](./foundational/smoothquant/) — W8A8; activation-to-weight outlier migration
 - [RLHF / InstructGPT](./foundational/rlhf/) — three-stage SFT+RM+PPO; the post-training foundation
 - [DPO](./foundational/dpo/) — collapse RLHF into one supervised step; the simpler default
+- [GPU Interconnect primer](./foundational/gpu-interconnect/) — NVLink, NVSwitch, RDMA, IBGDA; the fabric assumed by everything else
+- [Mamba and State Space Models](./foundational/mamba-ssm/) — linear-time, constant-memory-decode; hybrids with attention
 
 ### DeepSeek
 - [V3 Technical Report](./deepseek/v3-tech-report/) — FP8 training, DualPipe, MoE at 671B
