@@ -12,6 +12,9 @@ DeepSeek 的论文与开源 infra。
 | DeepSeekMoE | [en](./moe/en.md) | [zh](./moe/zh.md) |
 | R1 — RL-driven reasoning + GRPO | [en](./r1/en.md) | [zh](./r1/zh.md) |
 
-## Open-Source Week (2025)
+## Open-Source Week (2025) — source walkthroughs
 
-_Planned walkthroughs: FlashMLA, DeepEP, DeepGEMM, 3FS, DualPipe._
+See [`open-source-week/`](./open-source-week/README.md).
+
+- [FlashMLA](./open-source-week/flash-mla/) — MLA attention kernels; seesaw schedule; FP8 sparse decode
+- DeepEP, DeepGEMM, 3FS, DualPipe — planned

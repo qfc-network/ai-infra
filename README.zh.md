@@ -31,6 +31,7 @@
 - [MLA — Multi-head Latent Attention](./deepseek/mla/) — KV cache 压缩
 - [DeepSeekMoE](./deepseek/moe/) — 细粒度 + 共享专家
 - [R1](./deepseek/r1/) — 规则奖励 RL 驱动推理；GRPO；R1-Zero 涌现
+- [Open Source Week — FlashMLA 源码走读](./deepseek/open-source-week/flash-mla/) — seesaw 调度、FP8 稀疏 decode
 
 ### Meta
 - [Llama 3 Herd of Models](./meta/llama3/) — 405B dense、16k H100、4D 并行
