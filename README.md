@@ -20,6 +20,7 @@ Every paper gets both an English (`en.md`) and Chinese (`zh.md`) write-up using 
 
 ### Foundational
 - [FlashAttention 1 / 2 / 3](./foundational/flash-attention/) — IO-aware exact attention, Hopper async + FP8
+- [Triton](./foundational/triton/) — block-level GPU kernel DSL + MLIR compiler; the productivity multiplier
 - [PagedAttention / vLLM](./foundational/paged-attention/) — OS-style paging for KV cache, continuous batching
 - [Megatron-LM (TP / PP / SP)](./foundational/megatron-lm/) — tensor, pipeline, sequence parallelism + selective recompute
 - [ZeRO / FSDP](./foundational/zero-fsdp/) — sharded data parallelism; orthogonal to Megatron
@@ -42,6 +43,9 @@ Every paper gets both an English (`en.md`) and Chinese (`zh.md`) write-up using 
 
 ### Mistral
 - [Mixtral of Experts](./mistral/mixtral/) — 8×7B, top-2 routing, open-weight MoE baseline
+
+### Moonshot
+- [Mooncake](./moonshot/mooncake/) — KVCache-centric disaggregated inference; PD-disaggregation; cache pool
 
 ### Google
 - _Gemini / Pathways / TPU systems_ — planned

@@ -20,6 +20,7 @@
 
 ### Foundational（通用基础）
 - [FlashAttention 1 / 2 / 3](./foundational/flash-attention/) — IO-aware 精确注意力，Hopper 异步 + FP8
+- [Triton](./foundational/triton/) — 块级 GPU kernel DSL + MLIR 编译器；生产力放大器
 - [PagedAttention / vLLM](./foundational/paged-attention/) — OS 分页式 KV cache、连续批处理
 - [Megatron-LM (TP / PP / SP)](./foundational/megatron-lm/) — 张量、流水线、序列并行 + 选择性重算
 - [ZeRO / FSDP](./foundational/zero-fsdp/) — 切分式数据并行；与 Megatron 正交
@@ -42,6 +43,9 @@
 
 ### Mistral
 - [Mixtral of Experts](./mistral/mixtral/) — 8×7B、top-2 路由、开源 MoE 基线
+
+### Moonshot
+- [Mooncake](./moonshot/mooncake/) — KVCache 为中心的解耦推理；PD 解耦；缓存池
 
 ### Google
 - _Gemini / Pathways / TPU 系统_ — 待写
