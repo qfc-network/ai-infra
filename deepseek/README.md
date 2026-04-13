@@ -18,4 +18,5 @@ See [`open-source-week/`](./open-source-week/README.md).
 
 - [FlashMLA](./open-source-week/flash-mla/) — MLA attention kernels; seesaw schedule; FP8 sparse decode
 - [DeepEP](./open-source-week/deep-ep/) — expert-parallel all-to-all; asymmetric NVLink+RDMA; IBGDA low-latency
-- DeepGEMM, 3FS, DualPipe — planned
+- [DeepGEMM](./open-source-week/deep-gemm/) — JIT FP8/BF16 GEMM; 1d1d vs 1d2d scaling; masked grouped for MoE decode
+- 3FS, DualPipe — planned

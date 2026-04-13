@@ -33,6 +33,7 @@
 - [R1](./deepseek/r1/) — 规则奖励 RL 驱动推理；GRPO；R1-Zero 涌现
 - [Open Source Week — FlashMLA 源码走读](./deepseek/open-source-week/flash-mla/) — seesaw 调度、FP8 稀疏 decode
 - [Open Source Week — DeepEP 源码走读](./deepseek/open-source-week/deep-ep/) — 专家并行 all-to-all、IBGDA 低延迟
+- [Open Source Week — DeepGEMM 源码走读](./deepseek/open-source-week/deep-gemm/) — JIT FP8/BF16 GEMM、MoE 三种布局、V3.2 indexer
 
 ### Meta
 - [Llama 3 Herd of Models](./meta/llama3/) — 405B dense、16k H100、4D 并行
