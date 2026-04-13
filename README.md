@@ -28,6 +28,8 @@ Every paper gets both an English (`en.md`) and Chinese (`zh.md`) write-up using 
 - [Ring Attention / Context Parallelism](./foundational/ring-attention/) — exact attention at 1M+ context via sequence sharding
 - [DistServe](./foundational/distserve/) — prefill/decode disaggregation; goodput as the right metric
 - [SGLang](./foundational/sglang/) — RadixAttention prefix caching; frontend DSL for multi-call LLM programs
+- [Weight Quantization — GPTQ & AWQ](./foundational/weight-quantization/) — INT4 post-training; Hessian vs activation-aware
+- [SmoothQuant](./foundational/smoothquant/) — W8A8; activation-to-weight outlier migration
 
 ### DeepSeek
 - [V3 Technical Report](./deepseek/v3-tech-report/) — FP8 training, DualPipe, MoE at 671B

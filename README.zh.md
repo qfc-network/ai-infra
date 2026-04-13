@@ -28,6 +28,8 @@
 - [Ring Attention / Context Parallelism](./foundational/ring-attention/) — 序列切分，1M+ 精确 attention
 - [DistServe](./foundational/distserve/) — prefill/decode 解耦；goodput 作为正确度量
 - [SGLang](./foundational/sglang/) — RadixAttention 前缀缓存；多 call LLM 程序前端 DSL
+- [权重量化 — GPTQ & AWQ](./foundational/weight-quantization/) — INT4 训练后；Hessian vs 激活感知
+- [SmoothQuant](./foundational/smoothquant/) — W8A8；激活到权重的 outlier 迁移
 
 ### DeepSeek
 - [V3 Technical Report](./deepseek/v3-tech-report/) — FP8 训练、DualPipe、671B MoE
