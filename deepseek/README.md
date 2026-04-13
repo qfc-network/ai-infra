@@ -17,4 +17,5 @@ DeepSeek 的论文与开源 infra。
 See [`open-source-week/`](./open-source-week/README.md).
 
 - [FlashMLA](./open-source-week/flash-mla/) — MLA attention kernels; seesaw schedule; FP8 sparse decode
-- DeepEP, DeepGEMM, 3FS, DualPipe — planned
+- [DeepEP](./open-source-week/deep-ep/) — expert-parallel all-to-all; asymmetric NVLink+RDMA; IBGDA low-latency
+- DeepGEMM, 3FS, DualPipe — planned
