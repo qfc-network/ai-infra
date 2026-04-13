@@ -18,6 +18,9 @@
 
 ## 索引
 
+### Foundational（通用基础）
+- [FlashAttention 1 / 2 / 3](./foundational/flash-attention/) — IO-aware 精确注意力，Hopper 异步 + FP8
+
 ### DeepSeek
 - [V3 Technical Report](./deepseek/v3-tech-report/) — FP8 训练、DualPipe、671B MoE
 - [MLA — Multi-head Latent Attention](./deepseek/mla/) — KV cache 压缩
@@ -27,7 +30,7 @@
 - [Llama 3 Herd of Models](./meta/llama3/) — 405B dense、16k H100、4D 并行
 
 ### Mistral
-- _Mixtral / 稀疏 MoE_ — 待写
+- [Mixtral of Experts](./mistral/mixtral/) — 8×7B、top-2 路由、开源 MoE 基线
 
 ### Google
 - _Gemini / Pathways / TPU 系统_ — 待写

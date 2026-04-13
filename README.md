@@ -18,6 +18,9 @@ Every paper gets both an English (`en.md`) and Chinese (`zh.md`) write-up using 
 
 ## Index
 
+### Foundational
+- [FlashAttention 1 / 2 / 3](./foundational/flash-attention/) — IO-aware exact attention, Hopper async + FP8
+
 ### DeepSeek
 - [V3 Technical Report](./deepseek/v3-tech-report/) — FP8 training, DualPipe, MoE at 671B
 - [MLA — Multi-head Latent Attention](./deepseek/mla/) — KV cache compression
@@ -27,7 +30,7 @@ Every paper gets both an English (`en.md`) and Chinese (`zh.md`) write-up using 
 - [Llama 3 Herd of Models](./meta/llama3/) — 405B dense, 16k H100s, 4D parallelism
 
 ### Mistral
-- _Mixtral / sparse MoE_ — planned
+- [Mixtral of Experts](./mistral/mixtral/) — 8×7B, top-2 routing, open-weight MoE baseline
 
 ### Google
 - _Gemini / Pathways / TPU systems_ — planned
