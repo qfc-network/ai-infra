@@ -52,7 +52,8 @@
 - [Mooncake](./moonshot/mooncake/) — KVCache 为中心的解耦推理；PD 解耦；缓存池
 
 ### Google
-- _Gemini / Pathways / TPU 系统_ — 待写
+- [Pathways](./google/pathways/) — 异步分布式数据流运行时；TPU pod 规模单控制器
+- [GSPMD](./google/gspmd/) — XLA 自动并行 pass；sharding 作为类型
 
 ### Anthropic
 - _公开 infra 材料_ — 待写

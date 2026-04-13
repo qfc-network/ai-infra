@@ -52,7 +52,8 @@ Every paper gets both an English (`en.md`) and Chinese (`zh.md`) write-up using 
 - [Mooncake](./moonshot/mooncake/) — KVCache-centric disaggregated inference; PD-disaggregation; cache pool
 
 ### Google
-- _Gemini / Pathways / TPU systems_ — planned
+- [Pathways](./google/pathways/) — async distributed dataflow runtime; single-controller at TPU pod scale
+- [GSPMD](./google/gspmd/) — XLA compiler pass for auto-parallelization; sharding as a type
 
 ### Anthropic
 - _Public infra writings_ — planned
