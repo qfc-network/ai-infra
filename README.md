@@ -22,6 +22,8 @@ Every paper gets both an English (`en.md`) and Chinese (`zh.md`) write-up using 
 - [FlashAttention 1 / 2 / 3](./foundational/flash-attention/) — IO-aware exact attention, Hopper async + FP8
 - [PagedAttention / vLLM](./foundational/paged-attention/) — OS-style paging for KV cache, continuous batching
 - [Megatron-LM (TP / PP / SP)](./foundational/megatron-lm/) — tensor, pipeline, sequence parallelism + selective recompute
+- [ZeRO / FSDP](./foundational/zero-fsdp/) — sharded data parallelism; orthogonal to Megatron
+- [Speculative Decoding](./foundational/speculative-decoding/) — draft + verify; lossless 2–4× decode speedup
 
 ### DeepSeek
 - [V3 Technical Report](./deepseek/v3-tech-report/) — FP8 training, DualPipe, MoE at 671B

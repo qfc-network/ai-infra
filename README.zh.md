@@ -22,6 +22,8 @@
 - [FlashAttention 1 / 2 / 3](./foundational/flash-attention/) — IO-aware 精确注意力，Hopper 异步 + FP8
 - [PagedAttention / vLLM](./foundational/paged-attention/) — OS 分页式 KV cache、连续批处理
 - [Megatron-LM (TP / PP / SP)](./foundational/megatron-lm/) — 张量、流水线、序列并行 + 选择性重算
+- [ZeRO / FSDP](./foundational/zero-fsdp/) — 切分式数据并行；与 Megatron 正交
+- [Speculative Decoding](./foundational/speculative-decoding/) — draft + verify；无损 2–4× 解码加速
 
 ### DeepSeek
 - [V3 Technical Report](./deepseek/v3-tech-report/) — FP8 训练、DualPipe、671B MoE
