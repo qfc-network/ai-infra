@@ -24,7 +24,7 @@ Every paper gets both an English (`en.md`) and Chinese (`zh.md`) write-up using 
 - [DeepSeekMoE](./deepseek/moe/) — fine-grained + shared experts
 
 ### Meta
-- _Llama 3 Herd of Models_ — planned
+- [Llama 3 Herd of Models](./meta/llama3/) — 405B dense, 16k H100s, 4D parallelism
 
 ### Mistral
 - _Mixtral / sparse MoE_ — planned

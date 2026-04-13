@@ -24,7 +24,7 @@
 - [DeepSeekMoE](./deepseek/moe/) — 细粒度 + 共享专家
 
 ### Meta
-- _Llama 3 Herd of Models_ — 待写
+- [Llama 3 Herd of Models](./meta/llama3/) — 405B dense、16k H100、4D 并行
 
 ### Mistral
 - _Mixtral / 稀疏 MoE_ — 待写
