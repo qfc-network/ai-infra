@@ -24,11 +24,13 @@
 - [Megatron-LM (TP / PP / SP)](./foundational/megatron-lm/) — 张量、流水线、序列并行 + 选择性重算
 - [ZeRO / FSDP](./foundational/zero-fsdp/) — 切分式数据并行；与 Megatron 正交
 - [Speculative Decoding](./foundational/speculative-decoding/) — draft + verify；无损 2–4× 解码加速
+- [Ring Attention / Context Parallelism](./foundational/ring-attention/) — 序列切分，1M+ 精确 attention
 
 ### DeepSeek
 - [V3 Technical Report](./deepseek/v3-tech-report/) — FP8 训练、DualPipe、671B MoE
 - [MLA — Multi-head Latent Attention](./deepseek/mla/) — KV cache 压缩
 - [DeepSeekMoE](./deepseek/moe/) — 细粒度 + 共享专家
+- [R1](./deepseek/r1/) — 规则奖励 RL 驱动推理；GRPO；R1-Zero 涌现
 
 ### Meta
 - [Llama 3 Herd of Models](./meta/llama3/) — 405B dense、16k H100、4D 并行

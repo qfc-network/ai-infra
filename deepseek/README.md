@@ -10,6 +10,7 @@ DeepSeek 的论文与开源 infra。
 | V3 Technical Report | [en](./v3-tech-report/en.md) | [zh](./v3-tech-report/zh.md) |
 | MLA — Multi-head Latent Attention | [en](./mla/en.md) | [zh](./mla/zh.md) |
 | DeepSeekMoE | [en](./moe/en.md) | [zh](./moe/zh.md) |
+| R1 — RL-driven reasoning + GRPO | [en](./r1/en.md) | [zh](./r1/zh.md) |
 
 ## Open-Source Week (2025)
 

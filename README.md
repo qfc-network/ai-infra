@@ -24,11 +24,13 @@ Every paper gets both an English (`en.md`) and Chinese (`zh.md`) write-up using 
 - [Megatron-LM (TP / PP / SP)](./foundational/megatron-lm/) — tensor, pipeline, sequence parallelism + selective recompute
 - [ZeRO / FSDP](./foundational/zero-fsdp/) — sharded data parallelism; orthogonal to Megatron
 - [Speculative Decoding](./foundational/speculative-decoding/) — draft + verify; lossless 2–4× decode speedup
+- [Ring Attention / Context Parallelism](./foundational/ring-attention/) — exact attention at 1M+ context via sequence sharding
 
 ### DeepSeek
 - [V3 Technical Report](./deepseek/v3-tech-report/) — FP8 training, DualPipe, MoE at 671B
 - [MLA — Multi-head Latent Attention](./deepseek/mla/) — KV cache compression
 - [DeepSeekMoE](./deepseek/moe/) — fine-grained + shared experts
+- [R1](./deepseek/r1/) — reasoning via rule-based RL; GRPO; R1-Zero emergence
 
 ### Meta
 - [Llama 3 Herd of Models](./meta/llama3/) — 405B dense, 16k H100s, 4D parallelism
