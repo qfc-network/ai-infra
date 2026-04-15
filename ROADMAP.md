@@ -29,8 +29,8 @@ The repo currently has 35 topics across training, inference, architectures, and 
 
 ### New vendor sections
 - **NVIDIA**: Cutlass (the kernel template library), TensorRT-LLM (production inference engine)
-- **Microsoft**: DeepSpeed (the other major distributed training framework alongside Megatron/ZeRO)
-- **OpenAI**: Scaling Laws (Kaplan 2020) — the original, plus Chinchilla (Hoffmann 2022)
+- **Microsoft**: DeepSpeed extensions not in the existing ZeRO/FSDP entry (MoE, Chat pipeline, inference engine)
+- **verl (Bytedance)**: Production RL training framework; missing link between GRPO algorithm and actual training infra
 
 ---
 
@@ -40,34 +40,34 @@ The repo currently has 35 topics across training, inference, architectures, and 
 
 | # | Topic | Directory | Why now |
 |---|-------|-----------|---------|
-| 1 | Scaling Laws (Kaplan + Chinchilla) | `foundational/scaling-laws/` | Every compute-budget decision references this |
+| 1 | Scaling Laws (Kaplan 2020 + Chinchilla 2022) | `foundational/scaling-laws/` | Every compute-budget decision references this; Kaplan is OpenAI, Chinchilla is DeepMind — both covered here |
 | 2 | Grouped Query Attention (GQA) | `foundational/gqa/` | Used in Llama 3, Mistral, DeepSeek; MLA entry compares against it |
 | 3 | Rotary Position Embeddings (RoPE) | `foundational/rope/` | Assumed by MLA, Llama 3, R1; enables long-context work |
 | 4 | Orca — Continuous Batching | `foundational/orca/` | Foundation for vLLM, SGLang, DistServe, Mooncake |
 | 5 | LoRA / QLoRA | `foundational/lora/` | Default fine-tuning; assumed by RLHF, DPO, R1 distillation |
+| 6 | GRPO | `foundational/grpo/` | Standalone treatment of the RL algorithm; R1 entry only sketches it; pairs with RLHF + DPO |
 
 ### Phase 2 — Inference & Training Depth
 
 | # | Topic | Directory | Why |
 |---|-------|-----------|-----|
-| 6 | Mixed Precision Training (AMP / BF16 / FP8) | `foundational/mixed-precision/` | Prerequisite for FlashAttention-3 FP8, DeepSeek FP8 training |
-| 7 | Chunked Prefill / Sarathi-Serve | `foundational/chunked-prefill/` | Closes prefill-decode interference gap after DistServe |
-| 8 | KV Cache Quantization (KIVI / KVQuant) | `foundational/kv-cache-quantization/` | Completes the quantization arc (weights → activations → KV) |
-| 9 | GRPO | `foundational/grpo/` | Standalone treatment; R1 entry only sketches it |
+| 7 | Mixed Precision Training (AMP / BF16 / FP8) | `foundational/mixed-precision/` | Prerequisite for FlashAttention-3 FP8, DeepSeek FP8 training |
+| 8 | Chunked Prefill / Sarathi-Serve | `foundational/chunked-prefill/` | Closes prefill-decode interference gap after DistServe |
+| 9 | KV Cache Quantization (KIVI / KVQuant) | `foundational/kv-cache-quantization/` | Completes the quantization arc (weights → activations → KV) |
+| 10 | verl (HybridFlow) | `foundational/verl/` | Production RL training framework (Bytedance 2024); makes GRPO/PPO feasible at scale; connects RLHF → DPO → GRPO → R1 narrative to actual infra |
 
 ### Phase 3 — Alignment & Post-Training
 
 | # | Topic | Directory | Why |
 |---|-------|-----------|-----|
-| 10 | Constitutional AI | `anthropic/constitutional-ai/` | Anthropic's core alignment method; pairs with RLHF + DPO |
-| 11 | SimPO | `foundational/simpo/` | Reference-free DPO successor; growing adoption |
+| 11 | Constitutional AI | `anthropic/constitutional-ai/` | Anthropic's core alignment method; pairs with RLHF + DPO |
+| 12 | SimPO | `foundational/simpo/` | Reference-free DPO successor; growing adoption |
 
 ### Phase 4 — New Vendor Sections
 
 | # | Topic | Directory | Why |
 |---|-------|-----------|-----|
-| 12 | Scaling Laws paper (OpenAI) | `openai/scaling-laws/` | Author org; new `openai/` section |
-| 13 | DeepSpeed (ZeRO-Infinity, ZeRO-Offload) | `microsoft/deepspeed/` | Major training framework; new `microsoft/` section |
+| 13 | DeepSpeed extensions (DeepSpeed-MoE, DeepSpeed-Chat, inference engine) | `microsoft/deepspeed/` | ZeRO core is already covered in `foundational/zero-fsdp/`; this entry focuses on DeepSpeed-specific components not in that write-up: MoE expert parallelism, the Chat RLHF pipeline, and the inference engine |
 | 14 | Cutlass | `nvidia/cutlass/` | The kernel template library Triton competes with; new `nvidia/` section |
 | 15 | TensorRT-LLM | `nvidia/tensorrt-llm/` | Production inference engine; pairs with Triton and vLLM |
 
@@ -75,8 +75,7 @@ The repo currently has 35 topics across training, inference, architectures, and 
 
 | # | Topic | Directory | Why |
 |---|-------|-----------|-----|
-| 16 | Gemma 2 | `google/gemma2/` | Google open model; distillation, logit-softcapping, alt-attention |
-| 17 | Llama 2 | `meta/llama2/` | Bridges the gap before Llama 3 entry |
+| 16 | Gemma 2 | `google/gemma2/` | Google open model; distillation, logit-softcapping, alternating local/global attention |
 
 ---
 
