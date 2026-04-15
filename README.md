@@ -19,19 +19,25 @@ Every paper gets both an English (`en.md`) and Chinese (`zh.md`) write-up using 
 ## Index
 
 ### Foundational
+- [Scaling Laws — Kaplan 2020 + Chinchilla 2022](./foundational/scaling-laws/) — power-law compute/data/param tradeoffs; the 20-tokens-per-param rule
 - [FlashAttention 1 / 2 / 3](./foundational/flash-attention/) — IO-aware exact attention, Hopper async + FP8
 - [Triton](./foundational/triton/) — block-level GPU kernel DSL + MLIR compiler; the productivity multiplier
 - [PagedAttention / vLLM](./foundational/paged-attention/) — OS-style paging for KV cache, continuous batching
+- [Orca — Continuous Batching](./foundational/orca/) — iteration-level scheduling; goodput as the right metric; foundation for vLLM/SGLang
 - [Megatron-LM (TP / PP / SP)](./foundational/megatron-lm/) — tensor, pipeline, sequence parallelism + selective recompute
 - [ZeRO / FSDP](./foundational/zero-fsdp/) — sharded data parallelism; orthogonal to Megatron
 - [Speculative Decoding](./foundational/speculative-decoding/) — draft + verify; lossless 2–4× decode speedup
 - [Ring Attention / Context Parallelism](./foundational/ring-attention/) — exact attention at 1M+ context via sequence sharding
+- [Grouped Query Attention (GQA)](./foundational/gqa/) — H/G KV cache reduction; the default attention variant in Llama 3, Mistral, Gemma
+- [Rotary Position Embeddings (RoPE)](./foundational/rope/) — position-by-rotation; relative, parameter-free, flash-friendly; long-context extensions
 - [DistServe](./foundational/distserve/) — prefill/decode disaggregation; goodput as the right metric
 - [SGLang](./foundational/sglang/) — RadixAttention prefix caching; frontend DSL for multi-call LLM programs
 - [Weight Quantization — GPTQ & AWQ](./foundational/weight-quantization/) — INT4 post-training; Hessian vs activation-aware
 - [SmoothQuant](./foundational/smoothquant/) — W8A8; activation-to-weight outlier migration
 - [RLHF / InstructGPT](./foundational/rlhf/) — three-stage SFT+RM+PPO; the post-training foundation
 - [DPO](./foundational/dpo/) — collapse RLHF into one supervised step; the simpler default
+- [GRPO — Group Relative Policy Optimization](./foundational/grpo/) — critic-free RL via group advantage; the algorithm behind DeepSeek-R1
+- [LoRA / QLoRA](./foundational/lora/) — low-rank weight adaptation; 4-bit fine-tuning on a single GPU
 - [GPU Interconnect primer](./foundational/gpu-interconnect/) — NVLink, NVSwitch, RDMA, IBGDA; the fabric assumed by everything else
 - [Mamba and State Space Models](./foundational/mamba-ssm/) — linear-time, constant-memory-decode; hybrids with attention
 

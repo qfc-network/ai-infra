@@ -19,19 +19,25 @@
 ## 索引
 
 ### Foundational（通用基础）
+- [Scaling Laws — Kaplan 2020 + Chinchilla 2022](./foundational/scaling-laws/) — 算力/数据/参数的幂律关系；20 token/参数法则
 - [FlashAttention 1 / 2 / 3](./foundational/flash-attention/) — IO-aware 精确注意力，Hopper 异步 + FP8
 - [Triton](./foundational/triton/) — 块级 GPU kernel DSL + MLIR 编译器；生产力放大器
 - [PagedAttention / vLLM](./foundational/paged-attention/) — OS 分页式 KV cache、连续批处理
+- [Orca — 连续批处理](./foundational/orca/) — 迭代级调度；goodput 作为正确度量；vLLM/SGLang 的基础
 - [Megatron-LM (TP / PP / SP)](./foundational/megatron-lm/) — 张量、流水线、序列并行 + 选择性重算
 - [ZeRO / FSDP](./foundational/zero-fsdp/) — 切分式数据并行；与 Megatron 正交
 - [Speculative Decoding](./foundational/speculative-decoding/) — draft + verify；无损 2–4× 解码加速
 - [Ring Attention / Context Parallelism](./foundational/ring-attention/) — 序列切分，1M+ 精确 attention
+- [分组查询注意力（GQA）](./foundational/gqa/) — H/G 倍 KV cache 压缩；Llama 3、Mistral、Gemma 默认注意力方案
+- [旋转位置编码（RoPE）](./foundational/rope/) — 旋转编码位置；相对位置、零参数、Flash 友好；长上下文扩展
 - [DistServe](./foundational/distserve/) — prefill/decode 解耦；goodput 作为正确度量
 - [SGLang](./foundational/sglang/) — RadixAttention 前缀缓存；多 call LLM 程序前端 DSL
 - [权重量化 — GPTQ & AWQ](./foundational/weight-quantization/) — INT4 训练后；Hessian vs 激活感知
 - [SmoothQuant](./foundational/smoothquant/) — W8A8；激活到权重的 outlier 迁移
 - [RLHF / InstructGPT](./foundational/rlhf/) — 三阶段 SFT+RM+PPO；后训练的地基
 - [DPO](./foundational/dpo/) — RLHF 折叠为单次监督步；更简单的默认
+- [GRPO — 组相对策略优化](./foundational/grpo/) — 无 critic 的 RL；组优势估计；DeepSeek-R1 背后的算法
+- [LoRA / QLoRA](./foundational/lora/) — 低秩权重适配；单卡 4-bit 微调
 - [GPU 互联 primer](./foundational/gpu-interconnect/) — NVLink、NVSwitch、RDMA、IBGDA；其他条目默认的 fabric
 - [Mamba 与状态空间模型](./foundational/mamba-ssm/) — 线性时间、常量显存 decode；与 attention 的混合
 
