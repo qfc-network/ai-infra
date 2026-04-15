@@ -38,6 +38,10 @@ Every paper gets both an English (`en.md`) and Chinese (`zh.md`) write-up using 
 - [DPO](./foundational/dpo/) — collapse RLHF into one supervised step; the simpler default
 - [GRPO — Group Relative Policy Optimization](./foundational/grpo/) — critic-free RL via group advantage; the algorithm behind DeepSeek-R1
 - [LoRA / QLoRA](./foundational/lora/) — low-rank weight adaptation; 4-bit fine-tuning on a single GPU
+- [Mixed Precision Training](./foundational/mixed-precision/) — FP16 → BF16 → FP8; AMP, loss scaling, per-tensor/block FP8 scaling
+- [Chunked Prefill — Sarathi-Serve](./foundational/chunked-prefill/) — interleave prefill chunks with decode; eliminate TTFT stalls on a single GPU
+- [KV Cache Quantization — KIVI & KVQuant](./foundational/kv-cache-quantization/) — INT2 keys + INT4 values; completes the quantization arc
+- [verl — HybridFlow](./foundational/verl/) — per-model parallelism + CPU offload for PPO/GRPO at 70B+ scale; the infra behind R1-style training
 - [GPU Interconnect primer](./foundational/gpu-interconnect/) — NVLink, NVSwitch, RDMA, IBGDA; the fabric assumed by everything else
 - [Mamba and State Space Models](./foundational/mamba-ssm/) — linear-time, constant-memory-decode; hybrids with attention
 

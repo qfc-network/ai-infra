@@ -38,6 +38,10 @@
 - [DPO](./foundational/dpo/) — RLHF 折叠为单次监督步；更简单的默认
 - [GRPO — 组相对策略优化](./foundational/grpo/) — 无 critic 的 RL；组优势估计；DeepSeek-R1 背后的算法
 - [LoRA / QLoRA](./foundational/lora/) — 低秩权重适配；单卡 4-bit 微调
+- [混合精度训练](./foundational/mixed-precision/) — FP16 → BF16 → FP8；AMP、损失缩放、per-tensor/block FP8 缩放
+- [Chunked Prefill — Sarathi-Serve](./foundational/chunked-prefill/) — prefill 分块与 decode 交织；单卡消除首 token 延迟抖动
+- [KV Cache 量化 — KIVI & KVQuant](./foundational/kv-cache-quantization/) — INT2 key + INT4 value；完成量化闭环
+- [verl — HybridFlow](./foundational/verl/) — 每模型独立并行策略 + CPU 卸载；70B+ 规模 PPO/GRPO 的训练基础设施
 - [GPU 互联 primer](./foundational/gpu-interconnect/) — NVLink、NVSwitch、RDMA、IBGDA；其他条目默认的 fabric
 - [Mamba 与状态空间模型](./foundational/mamba-ssm/) — 线性时间、常量显存 decode；与 attention 的混合
 
