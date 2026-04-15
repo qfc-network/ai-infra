@@ -70,6 +70,13 @@ Every paper gets both an English (`en.md`) and Chinese (`zh.md`) write-up using 
 - [Pathways](./google/pathways/) — async distributed dataflow runtime; single-controller at TPU pod scale
 - [GSPMD](./google/gspmd/) — XLA compiler pass for auto-parallelization; sharding as a type
 
+### Microsoft
+- [DeepSpeed — MoE, Chat, and Inference Engine](./microsoft/deepspeed/) — expert parallelism, hybrid RLHF engine, fused INT8 inference
+
+### NVIDIA
+- [CUTLASS](./nvidia/cutlass/) — C++ GEMM template hierarchy; the kernel library under FlashAttention, DeepGEMM, and cuBLAS
+- [TensorRT-LLM](./nvidia/tensorrt-llm/) — AOT-compiled LLM inference; paged KV cache, FP8, continuous batching at H100 peak
+
 ### Anthropic
 - [Building Effective Agents](./anthropic/building-effective-agents/) — workflow vs agent, five workflow patterns
 - [Model Context Protocol (MCP)](./anthropic/mcp/) — LSP for LLMs; tools / resources / prompts via JSON-RPC

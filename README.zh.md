@@ -70,6 +70,13 @@
 - [Pathways](./google/pathways/) — 异步分布式数据流运行时；TPU pod 规模单控制器
 - [GSPMD](./google/gspmd/) — XLA 自动并行 pass；sharding 作为类型
 
+### Microsoft
+- [DeepSpeed — MoE、Chat 与推理引擎](./microsoft/deepspeed/) — 专家并行、混合 RLHF 引擎、融合 INT8 推理
+
+### NVIDIA
+- [CUTLASS](./nvidia/cutlass/) — C++ GEMM 模板层级；FlashAttention、DeepGEMM 和 cuBLAS 的底层算子库
+- [TensorRT-LLM](./nvidia/tensorrt-llm/) — AOT 编译 LLM 推理引擎；分页 KV cache、FP8、H100 峰值性能连续批处理
+
 ### Anthropic
 - [Building Effective Agents](./anthropic/building-effective-agents/) — workflow 与 agent 的区分、五种 workflow 模式
 - [Model Context Protocol (MCP)](./anthropic/mcp/) — LLM 的 LSP；tools / resources / prompts over JSON-RPC
