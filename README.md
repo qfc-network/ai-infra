@@ -75,6 +75,12 @@ Every paper gets both an English (`en.md`) and Chinese (`zh.md`) write-up using 
 - [Model Context Protocol (MCP)](./anthropic/mcp/) — LSP for LLMs; tools / resources / prompts via JSON-RPC
 - [Constitutional AI](./anthropic/constitutional-ai/) — critique-revision loop + RLAIF; harmlessness from AI feedback
 
+## Guides
+
+Career and onboarding guides — engineering-first, minimal ML algorithm prerequisites.
+
+- [From DevOps to AI Infrastructure](./guides/devops-to-ai-infra/) — skills that transfer, gaps to fill, three vertical paths (cluster ops / inference platform / training infra), 6-month milestones
+
 ## Contributing
 
 New papers: copy [`_template/`](./_template) into the appropriate vendor directory, fill in both `zh.md` and `en.md`, update this index.

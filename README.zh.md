@@ -75,6 +75,12 @@
 - [Model Context Protocol (MCP)](./anthropic/mcp/) — LLM 的 LSP；tools / resources / prompts over JSON-RPC
 - [Constitutional AI](./anthropic/constitutional-ai/) — 批判-修订循环 + RLAIF；基于 AI 反馈的无害性对齐
 
+## 指南
+
+职业路径与入门指南——工程视角优先，对 ML 算法背景要求低。
+
+- [DevOps 工程师如何切入 AI Infra](./guides/devops-to-ai-infra/) — 可迁移技能、需补缺口、三条垂直路径（集群运维 / 推理平台 / 训练基础设施）、6 个月里程碑
+
 ## 贡献
 
 新增论文：复制 [`_template/`](./_template) 到对应厂商目录，同时填写 `zh.md` 与 `en.md`，更新本索引。
