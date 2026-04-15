@@ -37,6 +37,7 @@
 - [RLHF / InstructGPT](./foundational/rlhf/) — 三阶段 SFT+RM+PPO；后训练的地基
 - [DPO](./foundational/dpo/) — RLHF 折叠为单次监督步；更简单的默认
 - [GRPO — 组相对策略优化](./foundational/grpo/) — 无 critic 的 RL；组优势估计；DeepSeek-R1 背后的算法
+- [SimPO — 简单偏好优化](./foundational/simpo/) — 无参考模型的 DPO；长度归一化奖励 + 目标奖励间隔
 - [LoRA / QLoRA](./foundational/lora/) — 低秩权重适配；单卡 4-bit 微调
 - [混合精度训练](./foundational/mixed-precision/) — FP16 → BF16 → FP8；AMP、损失缩放、per-tensor/block FP8 缩放
 - [Chunked Prefill — Sarathi-Serve](./foundational/chunked-prefill/) — prefill 分块与 decode 交织；单卡消除首 token 延迟抖动
@@ -72,6 +73,7 @@
 ### Anthropic
 - [Building Effective Agents](./anthropic/building-effective-agents/) — workflow 与 agent 的区分、五种 workflow 模式
 - [Model Context Protocol (MCP)](./anthropic/mcp/) — LLM 的 LSP；tools / resources / prompts over JSON-RPC
+- [Constitutional AI](./anthropic/constitutional-ai/) — 批判-修订循环 + RLAIF；基于 AI 反馈的无害性对齐
 
 ## 贡献
 

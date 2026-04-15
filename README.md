@@ -37,6 +37,7 @@ Every paper gets both an English (`en.md`) and Chinese (`zh.md`) write-up using 
 - [RLHF / InstructGPT](./foundational/rlhf/) — three-stage SFT+RM+PPO; the post-training foundation
 - [DPO](./foundational/dpo/) — collapse RLHF into one supervised step; the simpler default
 - [GRPO — Group Relative Policy Optimization](./foundational/grpo/) — critic-free RL via group advantage; the algorithm behind DeepSeek-R1
+- [SimPO — Simple Preference Optimization](./foundational/simpo/) — reference-free DPO; length-normalized reward + target margin
 - [LoRA / QLoRA](./foundational/lora/) — low-rank weight adaptation; 4-bit fine-tuning on a single GPU
 - [Mixed Precision Training](./foundational/mixed-precision/) — FP16 → BF16 → FP8; AMP, loss scaling, per-tensor/block FP8 scaling
 - [Chunked Prefill — Sarathi-Serve](./foundational/chunked-prefill/) — interleave prefill chunks with decode; eliminate TTFT stalls on a single GPU
@@ -72,6 +73,7 @@ Every paper gets both an English (`en.md`) and Chinese (`zh.md`) write-up using 
 ### Anthropic
 - [Building Effective Agents](./anthropic/building-effective-agents/) — workflow vs agent, five workflow patterns
 - [Model Context Protocol (MCP)](./anthropic/mcp/) — LSP for LLMs; tools / resources / prompts via JSON-RPC
+- [Constitutional AI](./anthropic/constitutional-ai/) — critique-revision loop + RLAIF; harmlessness from AI feedback
 
 ## Contributing
 
