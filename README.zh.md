@@ -49,6 +49,8 @@
 - [Mamba 与状态空间模型](./foundational/mamba-ssm/) — 线性时间、常量显存 decode；与 attention 的混合
 - [推理时扩展 — 测试时计算量](./foundational/inference-time-scaling/) — 并行搜索（best-of-N、PRM 束搜索）vs 顺序细化（思考 token）；按问题难度的计算最优策略
 - [过程奖励模型（PRM）](./foundational/process-reward-models/) — 步骤级验证；PRM800K 人工标注 vs MC 回滚自动标注；束搜索与 MCTS 整合
+- [投机解码变体 — Medusa / EAGLE](./foundational/speculative-decoding-variants/) — 树形自草稿；Medusa 并行多头；EAGLE 特征级自回归草稿；EAGLE-2 自适应树
+- [Blackwell / B200 架构 Primer](./foundational/blackwell-b200/) — FP4 张量核心、HBM3e 192 GB、NVLink 5 1.8 TB/s、GB200 NVL72 机架级互联
 
 ### DeepSeek
 - [V2 — 经济高效的 236B MoE](./deepseek/v2/) — MLA + DeepSeekMoE 作为系统；21B 激活 / 236B 总参数；吞吐较稠密前代提升 5.76×
@@ -65,6 +67,10 @@
 
 ### Meta
 - [Llama 3 Herd of Models](./meta/llama3/) — 405B dense、16k H100、4D 并行
+- [Llama 4](./meta/llama4/) — 首个 MoE 系列；Scout 17B×16E / Maverick 17B×128E；iRoPE 交替注意力；原生多模态
+
+### Qwen
+- [Qwen3](./qwen/qwen3/) — 思考/非思考切换；MoE 235B/22A + 稠密 0.6B–32B；RL 后训练；最强开放权重系列
 
 ### Mistral
 - [Mixtral of Experts](./mistral/mixtral/) — 8×7B、top-2 路由、开源 MoE 基线
@@ -94,6 +100,7 @@
 职业路径与入门指南——工程视角优先，对 ML 算法背景要求低。
 
 - [DevOps 工程师如何切入 AI Infra](./guides/devops-to-ai-infra/) — 可迁移技能、需补缺口、三条垂直路径（集群运维 / 推理平台 / 训练基础设施）、6 个月里程碑
+- [本地大模型部署指南](./guides/on-prem-llm-deployment/) — 从 Mac Studio + Ollama 到多节点 GPU 集群；硬件选型、软件栈、成本参考、决策流程图
 
 ## 贡献
 

@@ -49,6 +49,8 @@ Every paper gets both an English (`en.md`) and Chinese (`zh.md`) write-up using 
 - [Mamba and State Space Models](./foundational/mamba-ssm/) — linear-time, constant-memory-decode; hybrids with attention
 - [Inference-Time Scaling — Test-Time Compute](./foundational/inference-time-scaling/) — parallel search (best-of-N, PRM beam search) vs sequential refinement (thinking tokens); compute-optimal strategy by difficulty
 - [Process Reward Models (PRMs)](./foundational/process-reward-models/) — step-level verification; PRM800K human labels vs MC rollout auto-labeling; beam search and MCTS integration
+- [Speculative Decoding Variants — Medusa / EAGLE](./foundational/speculative-decoding-variants/) — tree-structured self-draft; Medusa parallel heads; EAGLE feature-level autoregressive draft; EAGLE-2 adaptive trees
+- [Blackwell / B200 Architecture Primer](./foundational/blackwell-b200/) — FP4 Tensor Cores, HBM3e 192 GB, NVLink 5 1.8 TB/s, GB200 NVL72 rack-scale fabric
 
 ### DeepSeek
 - [V2 — Economical MoE at 236B](./deepseek/v2/) — MLA + DeepSeekMoE as a system; 21B activated / 236B total; 5.76× throughput over dense predecessor
@@ -65,6 +67,10 @@ Every paper gets both an English (`en.md`) and Chinese (`zh.md`) write-up using 
 
 ### Meta
 - [Llama 3 Herd of Models](./meta/llama3/) — 405B dense, 16k H100s, 4D parallelism
+- [Llama 4](./meta/llama4/) — first MoE family; Scout 17B×16E / Maverick 17B×128E; iRoPE interleaved attention; native multimodal
+
+### Qwen
+- [Qwen3](./qwen/qwen3/) — thinking/non-thinking toggle; MoE 235B/22A + dense 0.6B–32B; RL post-training; top open-weight family
 
 ### Mistral
 - [Mixtral of Experts](./mistral/mixtral/) — 8×7B, top-2 routing, open-weight MoE baseline
@@ -94,6 +100,7 @@ Every paper gets both an English (`en.md`) and Chinese (`zh.md`) write-up using 
 Career and onboarding guides — engineering-first, minimal ML algorithm prerequisites.
 
 - [From DevOps to AI Infrastructure](./guides/devops-to-ai-infra/) — skills that transfer, gaps to fill, three vertical paths (cluster ops / inference platform / training infra), 6-month milestones
+- [On-Premise LLM Deployment](./guides/on-prem-llm-deployment/) — from Mac Studio + Ollama to multi-node GPU clusters; hardware sizing, software stack, cost reference, decision flowchart
 
 ## Contributing
 

@@ -37,22 +37,14 @@ All three entries complete: DeepSpeed (Microsoft), Cutlass (NVIDIA), TensorRT-LL
 
 ## Active Gap Analysis
 
-### Hardware gaps
-- **Hopper / H100 Architecture Primer** — FlashAttention-3, DeepGEMM, DualPipe, DeepEP all target Hopper-specific features (wgmma, TMA, async proxy, IBGDA, NVLink 4) without explaining them. A primer here makes ~6 existing entries more self-contained. Cross-reference leverage: highest in the repo.
-
-### DeepSeek arc gaps
-- **DeepSeek Prover / Math Reasoning Infra** — applies RLHF-style training to formal theorem proving (Lean 4); uses MCTS over proof states as the search backend. Bridges the inference-time scaling entry with the formal verification world.
-
-### Model family gaps
-- **Gemma 2** (Phase 5, still pending) — distillation at scale, logit-softcapping, alternating local/global attention.
+### Post-training / alignment
+- **RLHF at scale — reward model training** — the RLHF entry covers PPO; the reward model training pipeline (data collection, preference labeling, RM architecture, Goodharting mitigations) has no dedicated entry. Candidate for Phase 10.
 
 ### Inference systems
-- **Speculative Decoding variants — Medusa / EAGLE** — vanilla speculative decoding is covered; the production-grade tree-based variants (Medusa heads, EAGLE draft model) are what vLLM/SGLang actually ship. Natural extension of the existing speculative decoding entry.
-- **Prefix Caching** — SGLang's RadixAttention is mentioned but prefix caching as a standalone system design (eviction policy, hash-based matching, hit rate economics) has no dedicated entry.
+- **Continuous batching deep dive** — Orca/vLLM cover the concept; a deeper treatment of scheduling policies (chunked prefill + decode interleaving, priority queues, SLO-aware scheduling) has no dedicated entry.
 
-### Post-training / alignment
-- **Process Reward Models (PRMs)** — referenced in the inference-time scaling entry and GRPO commentary; no standalone treatment of how PRMs are trained, labeled (PRM800K), and integrated into search.
-- **RLHF at scale — reward model training** — the RLHF entry covers PPO; the reward model training pipeline (data collection, preference labeling, RM architecture, Goodharting mitigations) has no dedicated entry.
+### Multimodal infra
+- **Vision-Language serving** — ViT tokenization, variable-resolution tiling, cross-modal attention, prefill cost of visual tokens; becoming relevant as Llama 4 and Qwen3 both ship native vision.
 
 ---
 
@@ -66,13 +58,22 @@ All three entries complete: DeepSpeed (Microsoft), Cutlass (NVIDIA), TensorRT-LL
 | 20 | Speculative Decoding — Medusa / EAGLE | `foundational/speculative-decoding-variants/` | Extends existing speculative decoding entry; tree-based verification, self-draft methods in production |
 | 21 | Prefix Caching | `foundational/prefix-caching/` | ✓ done |
 
-### Phase 8 — Post-Training Depth
+### Phase 8 — Post-Training Depth ✓
 
-| # | Topic | Directory | Why |
-|---|-------|-----------|-----|
+| # | Topic | Directory | Status |
+|---|-------|-----------|--------|
 | 22 | Process Reward Models (PRMs) | `foundational/process-reward-models/` | ✓ done |
-| 23 | Gemma 2 | `google/gemma2/` | Phase 5 carry-over; distillation, softcapping, alternating attention |
+| 23 | Gemma 2 | `google/gemma2/` | ✓ done |
 | 24 | DeepSeek Prover | `deepseek/prover/` | ✓ done |
+
+### Phase 9 — Production Inference & New Architectures ✓
+
+| # | Topic | Directory | Status |
+|---|-------|-----------|--------|
+| 25 | Speculative Decoding — Medusa / EAGLE | `foundational/speculative-decoding-variants/` | ✓ done |
+| 26 | Llama 4 | `meta/llama4/` | ✓ done |
+| 27 | Qwen3 | `qwen/qwen3/` | ✓ done |
+| 28 | Blackwell / B200 Architecture Primer | `foundational/blackwell-b200/` | ✓ done |
 
 ---
 
