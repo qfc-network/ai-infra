@@ -72,7 +72,7 @@ All three entries complete: DeepSpeed (Microsoft), Cutlass (NVIDIA), TensorRT-LL
 |---|-------|-----------|-----|
 | 22 | Process Reward Models (PRMs) | `foundational/process-reward-models/` | ✓ done |
 | 23 | Gemma 2 | `google/gemma2/` | Phase 5 carry-over; distillation, softcapping, alternating attention |
-| 24 | DeepSeek Prover | `deepseek/prover/` | Lean 4 theorem proving via MCTS; connects formal verification to the reasoning model arc |
+| 24 | DeepSeek Prover | `deepseek/prover/` | ✓ done |
 
 ---
 

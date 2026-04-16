@@ -22,3 +22,9 @@ See [`open-source-week/`](./open-source-week/README.md).
 - [DeepGEMM](./open-source-week/deep-gemm/) — JIT FP8/BF16 GEMM; 1d1d vs 1d2d scaling; masked grouped for MoE decode
 - [DualPipe](./open-source-week/dualpipe/) — bidirectional pipeline schedule; halves bubbles at 2× param cost
 - [3FS](./open-source-week/3fs/) — distributed FS; CRAQ + FoundationDB + USRBIO `io_uring`-style API
+
+## Research
+
+| Topic | EN | ZH |
+|---|---|---|
+| DeepSeek-Prover — Lean 4 theorem proving via RL + RMaxTS | [en](./prover/en.md) | [zh](./prover/zh.md) |
