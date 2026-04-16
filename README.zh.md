@@ -32,6 +32,7 @@
 - [旋转位置编码（RoPE）](./foundational/rope/) — 旋转编码位置；相对位置、零参数、Flash 友好；长上下文扩展
 - [DistServe](./foundational/distserve/) — prefill/decode 解耦；goodput 作为正确度量
 - [SGLang](./foundational/sglang/) — RadixAttention 前缀缓存；多 call LLM 程序前端 DSL
+- [前缀缓存](./foundational/prefix-caching/) — 哈希 vs 基数字典树匹配；淘汰策略；命中率经济学；GPU→CPU→磁盘多级缓存；解耦路由
 - [权重量化 — GPTQ & AWQ](./foundational/weight-quantization/) — INT4 训练后；Hessian vs 激活感知
 - [SmoothQuant](./foundational/smoothquant/) — W8A8；激活到权重的 outlier 迁移
 - [RLHF / InstructGPT](./foundational/rlhf/) — 三阶段 SFT+RM+PPO；后训练的地基
@@ -44,9 +45,13 @@
 - [KV Cache 量化 — KIVI & KVQuant](./foundational/kv-cache-quantization/) — INT2 key + INT4 value；完成量化闭环
 - [verl — HybridFlow](./foundational/verl/) — 每模型独立并行策略 + CPU 卸载；70B+ 规模 PPO/GRPO 的训练基础设施
 - [GPU 互联 primer](./foundational/gpu-interconnect/) — NVLink、NVSwitch、RDMA、IBGDA；其他条目默认的 fabric
+- [Hopper / H100 架构 Primer](./foundational/hopper-h100/) — wgmma、TMA、FP8 Tensor Core、线程块集群；FlashAttention-3、DeepGEMM、DualPipe 背后的计算原语
 - [Mamba 与状态空间模型](./foundational/mamba-ssm/) — 线性时间、常量显存 decode；与 attention 的混合
+- [推理时扩展 — 测试时计算量](./foundational/inference-time-scaling/) — 并行搜索（best-of-N、PRM 束搜索）vs 顺序细化（思考 token）；按问题难度的计算最优策略
+- [过程奖励模型（PRM）](./foundational/process-reward-models/) — 步骤级验证；PRM800K 人工标注 vs MC 回滚自动标注；束搜索与 MCTS 整合
 
 ### DeepSeek
+- [V2 — 经济高效的 236B MoE](./deepseek/v2/) — MLA + DeepSeekMoE 作为系统；21B 激活 / 236B 总参数；吞吐较稠密前代提升 5.76×
 - [V3 Technical Report](./deepseek/v3-tech-report/) — FP8 训练、DualPipe、671B MoE
 - [MLA — Multi-head Latent Attention](./deepseek/mla/) — KV cache 压缩
 - [DeepSeekMoE](./deepseek/moe/) — 细粒度 + 共享专家
@@ -69,6 +74,7 @@
 ### Google
 - [Pathways](./google/pathways/) — 异步分布式数据流运行时；TPU pod 规模单控制器
 - [GSPMD](./google/gspmd/) — XLA 自动并行 pass；sharding 作为类型
+- [Gemma 2](./google/gemma2/) — 27B 教师模型蒸馏；logit 软截断；交替局部/全局注意力
 
 ### Microsoft
 - [DeepSpeed — MoE、Chat 与推理引擎](./microsoft/deepspeed/) — 专家并行、混合 RLHF 引擎、融合 INT8 推理

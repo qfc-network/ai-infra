@@ -7,6 +7,7 @@ DeepSeek 的论文与开源 infra。
 
 | Topic | EN | ZH |
 |---|---|---|
+| V2 — Economical MoE at 236B | [en](./v2/en.md) | [zh](./v2/zh.md) |
 | V3 Technical Report | [en](./v3-tech-report/en.md) | [zh](./v3-tech-report/zh.md) |
 | MLA — Multi-head Latent Attention | [en](./mla/en.md) | [zh](./mla/zh.md) |
 | DeepSeekMoE | [en](./moe/en.md) | [zh](./moe/zh.md) |

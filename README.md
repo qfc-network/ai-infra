@@ -32,6 +32,7 @@ Every paper gets both an English (`en.md`) and Chinese (`zh.md`) write-up using 
 - [Rotary Position Embeddings (RoPE)](./foundational/rope/) — position-by-rotation; relative, parameter-free, flash-friendly; long-context extensions
 - [DistServe](./foundational/distserve/) — prefill/decode disaggregation; goodput as the right metric
 - [SGLang](./foundational/sglang/) — RadixAttention prefix caching; frontend DSL for multi-call LLM programs
+- [Prefix Caching](./foundational/prefix-caching/) — hash-based vs radix-trie matching; eviction policies; hit rate economics; multi-tier GPU→CPU→disk; disaggregated routing
 - [Weight Quantization — GPTQ & AWQ](./foundational/weight-quantization/) — INT4 post-training; Hessian vs activation-aware
 - [SmoothQuant](./foundational/smoothquant/) — W8A8; activation-to-weight outlier migration
 - [RLHF / InstructGPT](./foundational/rlhf/) — three-stage SFT+RM+PPO; the post-training foundation
@@ -44,9 +45,13 @@ Every paper gets both an English (`en.md`) and Chinese (`zh.md`) write-up using 
 - [KV Cache Quantization — KIVI & KVQuant](./foundational/kv-cache-quantization/) — INT2 keys + INT4 values; completes the quantization arc
 - [verl — HybridFlow](./foundational/verl/) — per-model parallelism + CPU offload for PPO/GRPO at 70B+ scale; the infra behind R1-style training
 - [GPU Interconnect primer](./foundational/gpu-interconnect/) — NVLink, NVSwitch, RDMA, IBGDA; the fabric assumed by everything else
+- [Hopper / H100 Architecture Primer](./foundational/hopper-h100/) — wgmma, TMA, FP8 Tensor Cores, Thread Block Clusters; the compute primitives behind FlashAttention-3, DeepGEMM, DualPipe
 - [Mamba and State Space Models](./foundational/mamba-ssm/) — linear-time, constant-memory-decode; hybrids with attention
+- [Inference-Time Scaling — Test-Time Compute](./foundational/inference-time-scaling/) — parallel search (best-of-N, PRM beam search) vs sequential refinement (thinking tokens); compute-optimal strategy by difficulty
+- [Process Reward Models (PRMs)](./foundational/process-reward-models/) — step-level verification; PRM800K human labels vs MC rollout auto-labeling; beam search and MCTS integration
 
 ### DeepSeek
+- [V2 — Economical MoE at 236B](./deepseek/v2/) — MLA + DeepSeekMoE as a system; 21B activated / 236B total; 5.76× throughput over dense predecessor
 - [V3 Technical Report](./deepseek/v3-tech-report/) — FP8 training, DualPipe, MoE at 671B
 - [MLA — Multi-head Latent Attention](./deepseek/mla/) — KV cache compression
 - [DeepSeekMoE](./deepseek/moe/) — fine-grained + shared experts
@@ -69,6 +74,7 @@ Every paper gets both an English (`en.md`) and Chinese (`zh.md`) write-up using 
 ### Google
 - [Pathways](./google/pathways/) — async distributed dataflow runtime; single-controller at TPU pod scale
 - [GSPMD](./google/gspmd/) — XLA compiler pass for auto-parallelization; sharding as a type
+- [Gemma 2](./google/gemma2/) — distillation from 27B teacher; logit soft-capping; alternating local/global attention
 
 ### Microsoft
 - [DeepSpeed — MoE, Chat, and Inference Engine](./microsoft/deepspeed/) — expert parallelism, hybrid RLHF engine, fused INT8 inference
