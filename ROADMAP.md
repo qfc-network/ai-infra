@@ -2,7 +2,7 @@
 
 ## Context
 
-The repo currently has 73 topics plus 2 guides across training, inference, architectures, open-source infra, and multimodal. The goal is to systematically fill the gaps — topics that are either directly referenced by existing write-ups or are widely used in practice but not yet covered. Each new entry follows the established template: ~2,000–2,500 words, 1–2 equations, one Engineering Tradeoffs table (4–6 rows), both `en.md` and `zh.md`, and an update to the root `README.md` / `README.zh.md` index.
+The repo currently has 78 topics plus 2 guides across training, inference, architectures, open-source infra, and multimodal. The goal is to systematically fill the gaps — topics that are either directly referenced by existing write-ups or are widely used in practice but not yet covered. Each new entry follows the established template: ~2,000–2,500 words, 1–2 equations, one Engineering Tradeoffs table (4–6 rows), both `en.md` and `zh.md`, and an update to the root `README.md` / `README.zh.md` index.
 
 ---
 
@@ -122,19 +122,15 @@ All three entries complete: DeepSpeed (Microsoft), Cutlass (NVIDIA), TensorRT-LL
 
 ---
 
-## Phase 13 — Completing the Training/Inference Stack (recommended next)
+## Phase 13 — Completing the Training/Inference Stack ✓
 
-**Rationale**: Each entry here fills a hole that existing write-ups assume without explaining. Highest leverage for internal coherence of the repo.
-
-| # | Topic | Directory | Why |
-|---|-------|-----------|-----|
-| 43 | DDPM / DDIM / Classifier-Free Guidance | `foundational/diffusion-fundamentals/` | Prerequisite for the DiT entry (Phase 10); forward/reverse diffusion process, noise scheduling, CFG sampling; the math DiT builds on |
-| 44 | Sequence Parallelism Variants — Ulysses & Megatron-CP | `foundational/sequence-parallelism/` | Ring Attention covers one approach; Ulysses (DeepSpeed) uses all-to-all on head dim, Megatron-CP uses context parallelism with causal load balancing — completes the sequence-axis-parallelism story |
-| 45 | `torch.compile` / Inductor | `foundational/torch-compile/` | PyTorch 2.x's compilation stack: TorchDynamo frontend, AOTAutograd, Inductor lowering to Triton; how Triton actually runs in production training |
-| 46 | Knowledge Distillation at Scale | `foundational/knowledge-distillation/` | Soft labels, temperature, step-by-step distillation, MiniLLM; referenced by Gemma 2, R1 distilled models, InstructGPT |
-| 47 | DeepSeek V3.2 / Native Sparse Attention | `deepseek/v3-2-nsa/` | DeepSeek's 2025 sparse attention: lightning indexer + selective attention; referenced in DeepGEMM walkthrough but not standalone; closes the DeepSeek arc |
-
-**Cross-references to seed**: Diffusion Fundamentals → DiT (backward link). Sequence Parallelism → Ring Attention, Megatron-LM, Llama 3 (4D parallelism). `torch.compile` → Triton, FSDP, FlashAttention. Knowledge Distillation → Gemma 2, R1, InstructGPT, DPO. V3.2/NSA → FlashMLA walkthrough, DeepGEMM walkthrough, MLA, Ring Attention.
+| # | Topic | Directory | Status |
+|---|-------|-----------|--------|
+| 43 | DDPM / DDIM / Classifier-Free Guidance | `foundational/diffusion-fundamentals/` | ✓ done |
+| 44 | Sequence Parallelism Variants — Ulysses & Megatron-CP | `foundational/sequence-parallelism/` | ✓ done |
+| 45 | `torch.compile` / Inductor | `foundational/torch-compile/` | ✓ done |
+| 46 | Knowledge Distillation at Scale | `foundational/knowledge-distillation/` | ✓ done |
+| 47 | DeepSeek V3.2 / Native Sparse Attention | `deepseek/v3-2-nsa/` | ✓ done |
 
 ---
 

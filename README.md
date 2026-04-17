@@ -58,6 +58,10 @@ Every paper gets both an English (`en.md`) and Chinese (`zh.md`) write-up using 
 - [Switch Transformer & GShard](./foundational/switch-gshard/) — top-1 routing; auxiliary load-balancing loss; expert capacity factor; the foundational MoE papers
 - [TGI — Text Generation Inference](./foundational/tgi/) — HuggingFace's Rust + Python serving stack; continuous batching; quantization formats; vLLM comparison
 - [Multi-Tenant LoRA Serving — SLoRA / Punica](./foundational/multi-tenant-lora/) — paged adapter pool (SLoRA); SGMV batched kernel (Punica); serving thousands of adapters from one base model
+- [Diffusion Fundamentals — DDPM / DDIM / CFG](./foundational/diffusion-fundamentals/) — forward/reverse diffusion process; DDIM deterministic sampling; classifier-free guidance; NFE as the primary latency driver
+- [Sequence Parallelism Variants — Ulysses & Megatron-CP](./foundational/sequence-parallelism/) — all-to-all on head dim (Ulysses); causal even-odd interleaving (Megatron-CP); completes the sequence-axis parallelism story with Ring Attention
+- [torch.compile / Inductor](./foundational/torch-compile/) — TorchDynamo bytecode tracing; AOTAutograd joint graph; Inductor Triton codegen; operator fusion; CUDA Graphs
+- [Knowledge Distillation at Scale](./foundational/knowledge-distillation/) — soft label loss with temperature; white-box / black-box / sequence-level regimes; R1 distillation pipeline; Gemma 2 logit soft-capping
 
 ### Multimodal
 - [CLIP — Contrastive Language-Image Pretraining](./multimodal/clip/) — dual-encoder contrastive objective; InfoNCE loss over N² pairs; zero-shot classification; web-scale training
@@ -79,6 +83,7 @@ Every paper gets both an English (`en.md`) and Chinese (`zh.md`) write-up using 
 - [Open Source Week — DualPipe walkthrough](./deepseek/open-source-week/dualpipe/) — bidirectional pipeline schedule; halves bubbles
 - [Open Source Week — 3FS walkthrough](./deepseek/open-source-week/3fs/) — RDMA-native distributed FS; CRAQ + FDB + USRBIO
 - [DeepSeek-Prover](./deepseek/prover/) — Lean 4 theorem proving via RL + RMaxTS; compiler as perfect PRM; auto-formalization pipeline
+- [V3.2 / Native Sparse Attention (NSA)](./deepseek/v3-2-nsa/) — compressed + selected + window three-path sparse attention; V3.2 indexer kernel; native 128k context without RoPE interpolation
 
 ### Meta
 - [Llama 3 Herd of Models](./meta/llama3/) — 405B dense, 16k H100s, 4D parallelism

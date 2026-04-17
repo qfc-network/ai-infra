@@ -58,6 +58,10 @@
 - [Switch Transformer & GShard](./foundational/switch-gshard/) — top-1 路由；辅助负载均衡损失；专家容量因子；奠基性 MoE 论文
 - [TGI — Text Generation Inference](./foundational/tgi/) — HuggingFace 的 Rust + Python Serving 栈；连续批处理；量化格式；与 vLLM 对比
 - [多租户 LoRA Serving — SLoRA / Punica](./foundational/multi-tenant-lora/) — 分页适配器池（SLoRA）；SGMV 批量 kernel（Punica）；单基模型服务数千适配器
+- [扩散基础 — DDPM / DDIM / CFG](./foundational/diffusion-fundamentals/) — 前向/反向扩散过程；DDIM 确定性采样；无分类器引导；NFE 是主要延迟驱动因素
+- [序列并行变体 — Ulysses 与 Megatron-CP](./foundational/sequence-parallelism/) — head 维度 all-to-all（Ulysses）；因果奇偶交错（Megatron-CP）；与 Ring Attention 共同完成序列轴并行全景
+- [torch.compile / Inductor](./foundational/torch-compile/) — TorchDynamo 字节码追踪；AOTAutograd 联合图；Inductor Triton 代码生成；算子融合；CUDA Graphs
+- [大规模知识蒸馏](./foundational/knowledge-distillation/) — 带温度的软标签损失；白盒/黑盒/序列级蒸馏；R1 蒸馏流程；Gemma 2 logit 软截断
 
 ### 多模态
 - [CLIP — 对比语言-图像预训练](./multimodal/clip/) — 双编码器对比目标；N² 对上的 InfoNCE 损失；零样本分类；网络规模训练
@@ -79,6 +83,7 @@
 - [Open Source Week — DualPipe 源码走读](./deepseek/open-source-week/dualpipe/) — 双向流水线调度，bubble 减半
 - [Open Source Week — 3FS 源码走读](./deepseek/open-source-week/3fs/) — RDMA 原生分布式 FS；CRAQ + FDB + USRBIO
 - [DeepSeek-Prover](./deepseek/prover/) — Lean 4 定理证明；RL + RMaxTS；编译器作为完美 PRM；自动形式化流程
+- [V3.2 / 原生稀疏注意力（NSA）](./deepseek/v3-2-nsa/) — 压缩 + 选择 + 窗口三路径稀疏注意力；V3.2 indexer kernel；无需 RoPE 插值的原生 128k 上下文
 
 ### Meta
 - [Llama 3 Herd of Models](./meta/llama3/) — 405B dense、16k H100、4D 并行
