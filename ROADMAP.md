@@ -35,22 +35,30 @@ All three entries complete: DeepSpeed (Microsoft), Cutlass (NVIDIA), TensorRT-LL
 
 ---
 
-## Active Gap Analysis (post-Phase 9)
+## Active Gap Analysis (post-Phase 12)
 
-### Structural gaps (high priority)
+### Stack-completeness gaps (high priority)
 
-- **Multimodal infrastructure — zero coverage** — Llama 4 and Qwen3 are natively multimodal but the repo has no entries on CLIP, ViT, VLM architecture, speech, or diffusion-transformer video. The single biggest structural gap. No `multimodal/` section exists yet.
-- **Data & tokenization — zero coverage** — every training entry assumes a tokenized corpus; nothing explains how the corpus is built. BPE / SentencePiece / tokenizer training, data pipelines (FineWeb, MinHash dedup, quality filtering) are all missing.
-- **Position-interpolation long context** — Ring Attention covers the compute story; YaRN / LongRoPE / NTK-aware scaling (what every production long-context model actually uses to extend pretrained context) are missing.
+- **Diffusion foundations** — the DiT entry (Phase 10) assumes DDPM / DDIM / classifier-free guidance without explaining them. Retroactive prerequisite.
+- **Sequence Parallelism variants** — Ring Attention is covered; Ulysses (DeepSpeed) and Megatron-CP (the two other mainstream sequence-axis parallelism approaches used at frontier scale) are not.
+- **`torch.compile` / Inductor** — Triton is covered at the DSL level; the PyTorch compilation layer that actually orchestrates Triton in production training is missing. Referenced implicitly by FSDP, FlashAttention, and nearly every modern training entry.
+- **Knowledge Distillation at Scale** — referenced by Gemma 2, R1's distilled models, and the InstructGPT entry; no standalone treatment of white-box vs black-box distillation, step-by-step, or MiniLLM-style.
+- **DeepSeek V3.2 / Native Sparse Attention** — the DeepGEMM walkthrough mentions the V3.2 sparse indexer; DeepSeek's 2025 sparse attention work deserves standalone coverage.
 
-### Completeness gaps (medium priority)
+### New-axis gap (high strategic value)
 
-- **MoE foundations** — DeepSeekMoE and Mixtral are covered, but Switch Transformer and GShard (the papers that made sparse MoE viable at scale) are missing. Historical-foundations gap.
-- **Production inference 2.0** — vLLM, SGLang, TensorRT-LLM are covered; TGI (Hugging Face), NVIDIA Dynamo (2025), and multi-tenant LoRA serving (SLoRA / Punica) are not. Recency gap for anyone operating a serving platform today.
+- **Agent infrastructure** — the Anthropic section covers theory (MCP, Building Effective Agents) but has zero coverage of how agent systems are actually built in production: tool calling schemas, parallel tool calls, agent framework landscape (LangGraph / AutoGen / Swarm / DSPy), Computer Use, or agent evaluation infrastructure (SWE-bench, TAU-bench). This is the direction frontier-lab infra work is heading in 2026.
+
+### Lab-completeness gaps (medium priority)
+
+- **xAI** — no entry; Colossus cluster (100k+ H100) is the largest single-site training cluster currently operating.
+- **ByteDance / Seed** — major Chinese frontier lab with Doubao series; no coverage despite being a significant infra contributor (verl originated here).
+- **Apple** — no entry on Apple Foundation Models; on-device LLM inference is a distinct infra regime worth documenting.
 
 ### Lower-priority leftovers
-- **RLHF reward model training pipeline** — data collection, preference labeling, RM architecture, Goodharting mitigations — could extend the existing RLHF entry rather than a new write-up.
-- **SLO-aware scheduling depth** — chunked prefill + decode interleaving policies are covered across Orca / Sarathi / DistServe entries; a dedicated synthesis entry is possible but not urgent.
+- **RLHF reward model training pipeline** — could extend the existing RLHF entry rather than a new write-up.
+- **SLO-aware scheduling depth** — covered in pieces across Orca / Sarathi / DistServe; dedicated synthesis possible but not urgent.
+- **MoE routing improvements** — Expert Choice, Loss-Free Balancing (used in DeepSeek V3) — candidate for a future MoE-deep-dive entry.
 
 ---
 
@@ -114,9 +122,54 @@ All three entries complete: DeepSpeed (Microsoft), Cutlass (NVIDIA), TensorRT-LL
 
 ---
 
+## Phase 13 — Completing the Training/Inference Stack (recommended next)
+
+**Rationale**: Each entry here fills a hole that existing write-ups assume without explaining. Highest leverage for internal coherence of the repo.
+
+| # | Topic | Directory | Why |
+|---|-------|-----------|-----|
+| 43 | DDPM / DDIM / Classifier-Free Guidance | `foundational/diffusion-fundamentals/` | Prerequisite for the DiT entry (Phase 10); forward/reverse diffusion process, noise scheduling, CFG sampling; the math DiT builds on |
+| 44 | Sequence Parallelism Variants — Ulysses & Megatron-CP | `foundational/sequence-parallelism/` | Ring Attention covers one approach; Ulysses (DeepSpeed) uses all-to-all on head dim, Megatron-CP uses context parallelism with causal load balancing — completes the sequence-axis-parallelism story |
+| 45 | `torch.compile` / Inductor | `foundational/torch-compile/` | PyTorch 2.x's compilation stack: TorchDynamo frontend, AOTAutograd, Inductor lowering to Triton; how Triton actually runs in production training |
+| 46 | Knowledge Distillation at Scale | `foundational/knowledge-distillation/` | Soft labels, temperature, step-by-step distillation, MiniLLM; referenced by Gemma 2, R1 distilled models, InstructGPT |
+| 47 | DeepSeek V3.2 / Native Sparse Attention | `deepseek/v3-2-nsa/` | DeepSeek's 2025 sparse attention: lightning indexer + selective attention; referenced in DeepGEMM walkthrough but not standalone; closes the DeepSeek arc |
+
+**Cross-references to seed**: Diffusion Fundamentals → DiT (backward link). Sequence Parallelism → Ring Attention, Megatron-LM, Llama 3 (4D parallelism). `torch.compile` → Triton, FSDP, FlashAttention. Knowledge Distillation → Gemma 2, R1, InstructGPT, DPO. V3.2/NSA → FlashMLA walkthrough, DeepGEMM walkthrough, MLA, Ring Attention.
+
+---
+
+## Phase 14 — Agent Infrastructure (new strategic axis)
+
+**Rationale**: The Anthropic section has theory (MCP, Building Effective Agents); zero coverage of how agent systems are actually built and evaluated in production. This is where frontier-lab infra investment is going in 2026.
+
+| # | Topic | Directory | Why |
+|---|-------|-----------|-----|
+| 48 | Tool Use / Function Calling Infrastructure | `foundational/tool-use-infra/` | Parallel tool calls, schema validation, tool-call trajectories, safety layers; how OpenAI / Anthropic / Gemini function-calling protocols actually work in serving |
+| 49 | Agent Framework Landscape | `foundational/agent-frameworks/` | LangGraph (stateful graphs), AutoGen (multi-agent), OpenAI Swarm (handoffs), DSPy (prompt compilation); when to use which, tradeoffs, infra implications |
+| 50 | Computer Use & Browser Automation | `anthropic/computer-use/` | Anthropic's Computer Use model + API; screenshot-based visual grounding, action space, latency economics; pairs naturally with VLM Serving entry |
+| 51 | Agent Evaluation Infrastructure | `foundational/agent-evaluation/` | SWE-bench (code agents), TAU-bench (customer service), WebArena (browser agents); how agent workloads are actually graded; why this is harder than LM benchmarks |
+
+**Cross-references to seed**: Tool Use → MCP, Building Effective Agents. Agent Frameworks → Building Effective Agents, SGLang. Computer Use → VLM Serving, LLaVA. Agent Evaluation → Inference-Time Scaling, Process Reward Models.
+
+---
+
+## Phase 15 — Frontier Lab Completeness
+
+**Rationale**: Three major lab-level infra stories currently absent from the repo. Lower priority than Phases 13–14 because entries are more narrative than technical-reference, but important for "frontier labs infra" framing.
+
+| # | Topic | Directory | Why |
+|---|-------|-----------|-----|
+| 52 | xAI Grok + Colossus | `xai/grok-colossus/` | Largest single-site training cluster currently operating (100k+ H100, 200k target); Memphis deployment; story of building at that scale |
+| 53 | ByteDance Seed / Doubao | `bytedance/seed/` | Major Chinese frontier lab; Doubao model series; origin lab for verl and HybridFlow; infra choices reflective of Chinese scaling constraints |
+| 54 | Apple Foundation Models (AFM) | `apple/afm/` | On-device LLM inference as a distinct infra regime: server + device models, Private Cloud Compute, MLX at lab scale; different tradeoffs than cloud-only labs |
+
+**Cross-references to seed**: Grok/Colossus → Llama 3 (comparative cluster-scale infra), GPU Interconnect. ByteDance Seed → verl (originated here), DeepSeek (peer Chinese lab). Apple AFM → the on-prem-llm-deployment guide (MLX section), Mamba-SSM (on-device architecture tradeoffs).
+
+---
+
 ## Execution Notes
 
-- **Priority order**: Phase 10 (multimodal) first — it's the largest structural gap and unblocks future multimodal entries. Phase 11 and 12 can proceed in either order; data/tokenization (Phase 11) is more foundational, production inference (Phase 12) is more recency-driven.
+- **Priority order**: Phase 13 (stack completeness) first — each entry fills a gap already implicitly referenced by existing entries, so returns compound across the repo. Phase 14 (agent infra) second — highest strategic value but introduces a new axis, worth doing after internal coherence is improved. Phase 15 (lab completeness) last — valuable but narrative-heavy and lower leverage than the technical gaps in 13.
 - **Each topic**: `en.md` + `zh.md`, update `README.md` + `README.zh.md` index. Phase 10 also needs new `multimodal/` section headers in both READMEs.
 - **Format**: ~2,000–2,500 words, 1–2 key equations, 1 tradeoffs table (4–6 rows)
 - **Tone**: engineering-first — what are the memory/compute/latency consequences?
