@@ -257,11 +257,58 @@ Between "buy a DGX" and "build from parts," OEM vendors sell pre-built GPU serve
 
 ### Multi-Mac cluster
 
-Link multiple Mac Studios via Thunderbolt 5 or 10GbE using frameworks like [Exo](https://github.com/exo-explore/exo):
+Link multiple Mac Studios via Thunderbolt 5 or 10GbE using [Exo](https://github.com/exo-explore/exo) — the most mature framework for this. Exo auto-discovers Apple Silicon devices on the local network (mDNS), splits the model across nodes via pipeline parallelism, and supports both llama.cpp and MLX backends. No manual IP config or layer assignment needed.
 
-- Example: 4× Mac Studio 192 GB = 768 GB total memory — can run 405B FP16
-- **Catch:** Inter-node bandwidth (~20–40 Gbps Thunderbolt, ~10 Gbps Ethernet) is ~100× slower than NVLink. Tensor parallelism is impractical; only pipeline parallelism works, with high latency per token.
-- **Best for:** Teams that already own multiple Macs and want to experiment with large models without buying GPU hardware. Not viable for production serving.
+```bash
+# On each Mac
+pip install exo
+exo run llama-3.1-405b
+```
+
+**Cluster capacity examples:**
+
+| Configuration | Total Memory | What it runs |
+|---------------|--------------|--------------|
+| 2× Mac Studio 192 GB | 384 GB | 405B INT4 (~203 GB) comfortably |
+| 3× Mac Studio 192 GB | 576 GB | 671B INT4 (~336 GB) fits |
+| 4× Mac Studio 192 GB | 768 GB | 405B FP16 (~810 GB) borderline |
+| 2× Mac Studio 512 GB | 1 TB | 671B INT4 easy; 405B FP16 fits |
+
+**The bandwidth wall:**
+
+| Interconnect | Bandwidth | Latency |
+|--------------|-----------|---------|
+| NVLink 4 (H100 intra-node) | 900 GB/s | ~μs |
+| Thunderbolt 5 | ~10 GB/s (80 Gbps) | ~ms |
+| Thunderbolt 4 | ~5 GB/s (40 Gbps) | ~ms |
+| 10 GbE | ~1.2 GB/s | ~ms |
+
+Inter-node bandwidth is ~100× slower than NVLink. Implications:
+
+- **Tensor parallelism is impractical** — TP requires per-layer all-reduce; the bandwidth gap kills it
+- **Only pipeline parallelism works** — split by layers, only activations cross the wire
+- **Higher per-token latency** — single-user experience can be slower than running a smaller model on one Mac Studio
+- **Throughput doesn't scale linearly** — 2 nodes ≠ 2× speed; pipeline bubbles eat into gains
+
+**Realistic performance — 2× Mac Studio M4 Ultra 192 GB running 405B INT4:**
+
+| Metric | Expected |
+|--------|----------|
+| Fits? | Yes — 203 GB model into 384 GB total |
+| Single-user speed | ~2–4 tok/s (pipeline latency + low bandwidth) |
+| Concurrent users | 1–2 |
+| Comparison | Much slower than a single Mac Studio running 70B INT4 (~20 tok/s) |
+
+**Decision matrix:**
+
+| Scenario | Worth it? |
+|----------|-----------|
+| Already own multiple Macs, want to try 405B | Yes — zero additional cost |
+| Buying multiple Macs specifically to cluster | **No** — same budget on a GPU server gets ~10× throughput |
+| Latency-insensitive offline jobs (batch translation, summarization) | Acceptable |
+| Real-time interactive serving | Not recommended |
+
+**Bottom line:** Multi-Mac clusters let you **experiment** with models that won't fit on a single machine, but they don't solve performance. For production serving, the same money spent on GPUs is dramatically better.
 
 ### Specialized inference accelerators
 

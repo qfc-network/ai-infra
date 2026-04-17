@@ -257,11 +257,58 @@ Gaudi 3 的 LLM 推理性能接近 H100，但每卡价格约为一半。vLLM 有
 
 ### 多 Mac 集群
 
-用 Thunderbolt 5 或万兆以太网将多台 Mac Studio 链接起来，使用 [Exo](https://github.com/exo-explore/exo) 等框架：
+用 Thunderbolt 5 或万兆以太网将多台 Mac Studio 链接起来。最成熟的框架是 [Exo](https://github.com/exo-explore/exo)——通过 mDNS 自动发现局域网内的 Apple Silicon 设备，按 pipeline parallelism 切分模型到多台机器，支持 llama.cpp 和 MLX 后端。不需要手动配置 IP 或分配层。
 
-- 例如：4× Mac Studio 192 GB = 768 GB 总内存——可跑 405B FP16
-- **问题：** 节点间带宽（Thunderbolt ~20–40 Gbps，以太网 ~10 Gbps）比 NVLink 慢约 100 倍。Tensor parallelism 不实际；只能用 pipeline parallelism，每 token 延迟高。
-- **适合：** 已有多台 Mac 的团队，想不买 GPU 硬件就试试大模型。不适合生产 serving。
+```bash
+# 每台 Mac 上安装
+pip install exo
+exo run llama-3.1-405b
+```
+
+**集群容量示例：**
+
+| 配置 | 总内存 | 能跑什么 |
+|------|--------|---------|
+| 2× Mac Studio 192 GB | 384 GB | 405B INT4（~203 GB）舒服跑 |
+| 3× Mac Studio 192 GB | 576 GB | 671B INT4（~336 GB）可以 |
+| 4× Mac Studio 192 GB | 768 GB | 405B FP16（~810 GB）勉强 |
+| 2× Mac Studio 512 GB | 1 TB | 671B INT4 轻松；405B FP16 装得下 |
+
+**带宽是硬伤：**
+
+| 互联方式 | 带宽 | 延迟 |
+|---------|------|------|
+| NVLink 4（H100 机内） | 900 GB/s | ~μs |
+| Thunderbolt 5 | ~10 GB/s (80 Gbps) | ~ms |
+| Thunderbolt 4 | ~5 GB/s (40 Gbps) | ~ms |
+| 10GbE 以太网 | ~1.2 GB/s | ~ms |
+
+节点间带宽比 NVLink 慢约 100 倍。这意味着：
+
+- **Tensor Parallelism 不可行**——TP 需要每层 all-reduce，带宽差距直接卡死
+- **只能用 Pipeline Parallelism**——按层切分，节点间只传激活值
+- **每 token 延迟更高**——单用户体感可能比单台 Mac Studio 跑小模型还慢
+- **吞吐不线性扩展**——2 台不等于 2× 速度，pipeline bubble 会吃掉一部分
+
+**实际性能预估——2× Mac Studio M4 Ultra 192 GB 跑 405B INT4：**
+
+| 指标 | 预期值 |
+|------|-------|
+| 能不能跑 | 能，203 GB 模型装进 384 GB 总内存 |
+| 单用户速度 | ~2–4 tok/s（pipeline 延迟 + 低带宽） |
+| 并发 | 1–2 人 |
+| 体验对比 | 比单台 Mac Studio 跑 70B INT4（~20 tok/s）慢很多 |
+
+**决策矩阵：**
+
+| 场景 | 值不值 |
+|------|--------|
+| 手上已有多台 Mac，想试 405B | 值得，零额外成本 |
+| 专门买多台 Mac 来组集群跑大模型 | **不值得**——同样预算买 GPU 服务器吞吐高约 10 倍 |
+| 对延迟不敏感的离线任务（批量翻译、摘要） | 可以接受 |
+| 需要实时交互的在线服务 | 不推荐 |
+
+**核心结论：** 多 Mac 集群能让你**试用**单机装不下的大模型，但解决不了性能问题。如果目的是生产 serving，同样预算投 GPU 更划算。
 
 ### 专用推理芯片
 
