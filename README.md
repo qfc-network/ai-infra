@@ -51,6 +51,21 @@ Every paper gets both an English (`en.md`) and Chinese (`zh.md`) write-up using 
 - [Process Reward Models (PRMs)](./foundational/process-reward-models/) — step-level verification; PRM800K human labels vs MC rollout auto-labeling; beam search and MCTS integration
 - [Speculative Decoding Variants — Medusa / EAGLE](./foundational/speculative-decoding-variants/) — tree-structured self-draft; Medusa parallel heads; EAGLE feature-level autoregressive draft; EAGLE-2 adaptive trees
 - [Blackwell / B200 Architecture Primer](./foundational/blackwell-b200/) — FP4 Tensor Cores, HBM3e 192 GB, NVLink 5 1.8 TB/s, GB200 NVL72 rack-scale fabric
+- [Tokenization — BPE, SentencePiece, Tiktoken](./foundational/tokenization/) — subword algorithms; multilingual token budget economics; fertility by language
+- [Data Pipelines — FineWeb / MinHash / Quality Filtering](./foundational/data-pipeline/) — Common Crawl → pretraining corpus; MinHash dedup; quality classifiers at trillion-token scale
+- [Position Interpolation — YaRN / LongRoPE / NTK-aware](./foundational/position-interpolation/) — extending pretrained RoPE models to 128k–2M context; NTK-aware base change; YaRN non-uniform scaling
+- [Streaming LLM & Attention Sinks](./foundational/streaming-llm/) — bounded KV cache for infinite-length generation; attention sink phenomenon; K_sink + sliding window
+- [Switch Transformer & GShard](./foundational/switch-gshard/) — top-1 routing; auxiliary load-balancing loss; expert capacity factor; the foundational MoE papers
+- [TGI — Text Generation Inference](./foundational/tgi/) — HuggingFace's Rust + Python serving stack; continuous batching; quantization formats; vLLM comparison
+- [Multi-Tenant LoRA Serving — SLoRA / Punica](./foundational/multi-tenant-lora/) — paged adapter pool (SLoRA); SGMV batched kernel (Punica); serving thousands of adapters from one base model
+
+### Multimodal
+- [CLIP — Contrastive Language-Image Pretraining](./multimodal/clip/) — dual-encoder contrastive objective; InfoNCE loss over N² pairs; zero-shot classification; web-scale training
+- [Vision Transformer (ViT)](./multimodal/vit/) — patch embedding; [CLS] token; ViT-L/14 → 576 tokens; FlashAttention-compatible; DeiT distillation
+- [LLaVA / Vision-Language Models](./multimodal/llava/) — MLP projector; two-stage training; visual token counts (256→576→2880); image prefix caching
+- [Whisper — Speech Recognition](./multimodal/whisper/) — log-mel spectrogram; 30s chunking; multitask via special tokens; weakly-supervised at 680k hours
+- [DiT — Diffusion Transformers](./multimodal/dit/) — latent diffusion + transformer backbone; adaLN conditioning; Sora / SD3 / FLUX lineage; compute-bound inference
+- [VLM Serving](./multimodal/vlm-serving/) — visual token prefill economics; variable-resolution tiling; image prefix caching; heterogeneous batching
 
 ### DeepSeek
 - [V2 — Economical MoE at 236B](./deepseek/v2/) — MLA + DeepSeekMoE as a system; 21B activated / 236B total; 5.76× throughput over dense predecessor
@@ -89,6 +104,7 @@ Every paper gets both an English (`en.md`) and Chinese (`zh.md`) write-up using 
 ### NVIDIA
 - [CUTLASS](./nvidia/cutlass/) — C++ GEMM template hierarchy; the kernel library under FlashAttention, DeepGEMM, and cuBLAS
 - [TensorRT-LLM](./nvidia/tensorrt-llm/) — AOT-compiled LLM inference; paged KV cache, FP8, continuous batching at H100 peak
+- [Dynamo](./nvidia/dynamo/) — disaggregated inference orchestration; KV-aware routing; prefill/decode pool management; TensorRT-LLM integration
 
 ### Anthropic
 - [Building Effective Agents](./anthropic/building-effective-agents/) — workflow vs agent, five workflow patterns

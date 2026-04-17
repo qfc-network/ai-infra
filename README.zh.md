@@ -51,6 +51,21 @@
 - [过程奖励模型（PRM）](./foundational/process-reward-models/) — 步骤级验证；PRM800K 人工标注 vs MC 回滚自动标注；束搜索与 MCTS 整合
 - [投机解码变体 — Medusa / EAGLE](./foundational/speculative-decoding-variants/) — 树形自草稿；Medusa 并行多头；EAGLE 特征级自回归草稿；EAGLE-2 自适应树
 - [Blackwell / B200 架构 Primer](./foundational/blackwell-b200/) — FP4 张量核心、HBM3e 192 GB、NVLink 5 1.8 TB/s、GB200 NVL72 机架级互联
+- [分词 — BPE、SentencePiece、Tiktoken](./foundational/tokenization/) — 子词算法；多语言 token 预算经济学；不同语言的词汇率
+- [数据管线 — FineWeb / MinHash / 质量过滤](./foundational/data-pipeline/) — Common Crawl → 预训练语料；MinHash 去重；万亿 token 规模质量分类器
+- [位置内插 — YaRN / LongRoPE / NTK-aware](./foundational/position-interpolation/) — 将预训练 RoPE 模型扩展至 128k–2M 上下文；NTK-aware 基频变换；YaRN 非均匀缩放
+- [Streaming LLM 与注意力汇聚点](./foundational/streaming-llm/) — 有界 KV cache 实现无限长生成；注意力汇聚点现象；K_sink + 滑动窗口
+- [Switch Transformer & GShard](./foundational/switch-gshard/) — top-1 路由；辅助负载均衡损失；专家容量因子；奠基性 MoE 论文
+- [TGI — Text Generation Inference](./foundational/tgi/) — HuggingFace 的 Rust + Python Serving 栈；连续批处理；量化格式；与 vLLM 对比
+- [多租户 LoRA Serving — SLoRA / Punica](./foundational/multi-tenant-lora/) — 分页适配器池（SLoRA）；SGMV 批量 kernel（Punica）；单基模型服务数千适配器
+
+### 多模态
+- [CLIP — 对比语言-图像预训练](./multimodal/clip/) — 双编码器对比目标；N² 对上的 InfoNCE 损失；零样本分类；网络规模训练
+- [Vision Transformer（ViT）](./multimodal/vit/) — patch 嵌入；[CLS] token；ViT-L/14 → 576 token；FlashAttention 兼容；DeiT 蒸馏
+- [LLaVA / 视觉语言模型](./multimodal/llava/) — MLP 投影器；两阶段训练；视觉 token 数量（256→576→2880）；图像前缀缓存
+- [Whisper — 语音识别](./multimodal/whisper/) — log-mel 频谱图；30 秒分块；特殊 token 多任务；68 万小时弱监督训练
+- [DiT — 扩散 Transformer](./multimodal/dit/) — 潜在扩散 + Transformer 骨干；adaLN 条件调制；Sora / SD3 / FLUX 谱系；计算密集型推理
+- [VLM Serving](./multimodal/vlm-serving/) — 视觉 token prefill 经济学；变分辨率分块；图像前缀缓存；异构批处理
 
 ### DeepSeek
 - [V2 — 经济高效的 236B MoE](./deepseek/v2/) — MLA + DeepSeekMoE 作为系统；21B 激活 / 236B 总参数；吞吐较稠密前代提升 5.76×
@@ -89,6 +104,7 @@
 ### NVIDIA
 - [CUTLASS](./nvidia/cutlass/) — C++ GEMM 模板层级；FlashAttention、DeepGEMM 和 cuBLAS 的底层算子库
 - [TensorRT-LLM](./nvidia/tensorrt-llm/) — AOT 编译 LLM 推理引擎；分页 KV cache、FP8、H100 峰值性能连续批处理
+- [Dynamo](./nvidia/dynamo/) — 解耦推理编排；KV 感知路由；prefill/decode 资源池管理；TensorRT-LLM 集成
 
 ### Anthropic
 - [Building Effective Agents](./anthropic/building-effective-agents/) — workflow 与 agent 的区分、五种 workflow 模式
