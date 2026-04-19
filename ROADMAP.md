@@ -35,28 +35,29 @@ All three entries complete: DeepSpeed (Microsoft), Cutlass (NVIDIA), TensorRT-LL
 
 ---
 
-## Active Gap Analysis (post-Phase 15)
+## Active Gap Analysis (post-Phase 18)
 
-Phases 1–15 shipped 54 entries across foundational / multimodal / vendor sections plus three guides. The repo now covers the full training + inference + agent stack end-to-end. Remaining gaps are in **the production-systems layer under the paper-level abstractions** (libraries like TransformerEngine, NCCL, DCP that appear by name in shipped entries but have no standalone treatment), **architectural breadth** (MoE routing beyond the foundational papers, hybrid SSM-Transformer), and **evaluation + deployment surfaces** (base LLM eval plumbing vs the agent-eval entry in Phase 14, confidential/TEE inference).
+Phases 1–18 shipped 65 topic entries + 3 guides. The repo now covers training systems, inference systems, architecture, agents, evaluation, secure/confidential deployment, and library-layer primitives end-to-end. Remaining gaps are **framework/toolchain references** (HF Transformers, Ray, FlexAttention — implementations cited everywhere but no standalone), **training recipe primitives** (stability, LR schedules, activation/norm variants, synthetic data — the "recipe" under every training paper), and **frontier model family gaps** (Gemini 1.5/2.0, NVIDIA Nemotron, reasoning-model landscape).
 
-### Training-stack primitive gaps (high priority — cited, not covered)
+### Framework / toolchain gaps (high priority — referenced everywhere)
 
-- **NVIDIA TransformerEngine** — FP8 primitives library referenced by mixed-precision, FSDP, Megatron; the missing layer between Hopper/H100 and the training papers.
-- **NCCL internals** — ring vs tree algorithms, SHARP offload, PXN; referenced by every training entry and the DevOps guide but never explained standalone.
-- **Megatron-Core vs the Megatron-LM paper** — the productionized modular library (used by Grok, Nemotron, NeMo) diverged from the 2021 paper; the paper entry is stale as a reference to current practice.
-- **Async checkpointing & PyTorch DCP** — mentioned in DualPipe and Llama 3 entries; no standalone treatment of distributed checkpoint, async writes, or recovery bandwidth.
+- **Hugging Face stack** — Transformers, PEFT, TRL, Accelerate; the reference implementation under most entries. The on-prem guide mentions PEFT/TRL; no standalone.
+- **FlexAttention** — PyTorch 2.5+ composable attention primitive with score-mod API; score_mod replaces custom Triton kernels for many attention variants; referenced by torch.compile entry but not standalone.
+- **Ray & Ray Serve for LLM** — orchestration layer under verl, ByteDance Seed, Anyscale; no standalone. Cited in verl entry.
+- **Fine-tuning toolchain (Axolotl / Llama-Factory / Unsloth)** — production SFT+LoRA stacks; on-prem guide references Axolotl; no standalone.
 
-### Architecture / deployment breadth gaps (medium priority)
+### Training recipe gaps (medium priority)
 
-- **MoE routing improvements** — DeepSeekMoE + Switch/GShard cover foundations; Expert Choice routing and Loss-Free Balancing (DeepSeek V3's actual routing) are referenced but not covered. Closes the MoE arc.
-- **Hybrid SSM-Transformer (Jamba)** — Mamba entry exists; the pragmatic hybrid approach (AI21 Jamba, Nemotron-H) is where SSMs actually shipped.
-- **llama.cpp / GGUF** — the on-prem guide mentions Ollama (which wraps it); GGUF format and CPU+GPU hybrid inference deserve standalone coverage.
-- **LMDeploy / TurboMind** — major Chinese serving stack (Shanghai AI Lab); W4A16 kernels; missing peer to TGI / vLLM / SGLang.
+- **Training stability** — loss spikes, Z-loss, muP, weight init; referenced implicitly by Megatron / Llama 3 / Grok. Recipe-level content that sits under every training entry.
+- **LR schedules & optimizers** — WSD (warmup-stable-decay, now the default), AdamW tuning, Lion / Sophia optimizers; no coverage.
+- **Activation & norm primitives** — SwiGLU, GLU variants, RMSNorm, QK-norm; universal in modern LLMs, no standalone entry.
+- **Synthetic data generation for training** — Phi series, Nemotron-4 340B for reward modeling, R1-distill data pipelines; pairs with Knowledge Distillation (which covers training side) but not the data-generation economics.
 
-### Evaluation & secure-inference gaps (medium priority)
+### Frontier model family gaps (medium priority)
 
-- **Base LLM evaluation harness** — agent eval is covered (Phase 14); lm-eval-harness, MMLU/GSM8K/HumanEval plumbing, and Chatbot Arena / LMSYS Elo infrastructure have no entry. Cited implicitly by every model-family entry.
-- **Confidential LLM inference** — H100 Confidential Computing, Nitro Enclaves, TEE-gated serving; natural pair for the secure-agent-deployment guide (Phase 14b).
+- **Google Gemini 1.5 / 2.0** — native multimodal, 2M context, MoE; notable infra (TPU-first); no entry.
+- **NVIDIA Nemotron** — 340B synthetic-data + reward-modeling pipeline; NeMo stack; TransformerEngine/Megatron-Core reference consumer.
+- **Reasoning-model landscape** — meta-analysis linking o1/o3, Claude 3.7/4 thinking, R1 (covered), Qwen3 thinking mode (covered); infrastructure implications of long-chain-of-thought (KV cache growth, thinking-token economics).
 
 ### Lower-priority leftovers (unchanged)
 - **RLHF reward model training pipeline** — could extend the existing RLHF entry rather than a new write-up.
@@ -195,8 +196,53 @@ Phases 1–15 shipped 54 entries across foundational / multimodal / vendor secti
 
 ---
 
+## Phase 19 — Open-Source Framework Stack (recommended next)
+
+**Rationale**: Phases 16–18 filled the library layer underneath paper-level entries. Phase 19 covers the **framework layer above** — the reference implementations (HF Transformers, Ray, FlexAttention, Axolotl) that most entries assume as the baseline. Highest internal-coherence leverage of the remaining phases: every model-family and fine-tuning entry implicitly depends on these.
+
+| # | Topic | Directory | Why |
+|---|-------|-----------|-----|
+| 66 | Hugging Face Stack — Transformers / PEFT / TRL / Accelerate | `foundational/huggingface-stack/` | The reference implementation family: `Transformers` (model zoo + generate loop), `PEFT` (LoRA/adapters surface), `TRL` (RLHF/DPO/GRPO trainers, used by OpenRLHF/verl peers), `Accelerate` (device mesh + launcher); nearly every entry links here implicitly |
+| 67 | FlexAttention | `foundational/flex-attention/` | PyTorch 2.5+ composable attention with `score_mod` API; replaces custom Triton kernels for many variants (causal, sliding, ALiBi, document masks); compiled via Inductor; the productivity successor to FlashAttention for common cases |
+| 68 | Ray & Ray Serve for LLM | `foundational/ray-for-llm/` | Distributed orchestration substrate: Ray actors for training (verl, OpenRLHF), Ray Serve for inference, Ray Data for preprocessing; the glue under multi-stage RL + inference pipelines |
+| 69 | Fine-tuning Toolchain — Axolotl / Llama-Factory / Unsloth | `foundational/finetuning-toolchain/` | Config-driven SFT + LoRA pipelines (Axolotl YAML, Llama-Factory CLI); Unsloth's Triton kernel optimizations for 2–5× speedup; where LoRA/QLoRA theory meets production fine-tuning |
+
+**Cross-references to seed**: HF Stack → LoRA/QLoRA, RLHF, DPO, GRPO, all model-family entries. FlexAttention → FlashAttention, torch.compile, Triton, Ring Attention, streaming-llm. Ray → verl (Ray-based), ByteDance Seed, agent-frameworks. Fine-tuning Toolchain → LoRA/QLoRA, Multi-tenant LoRA, on-prem-llm-deployment guide.
+
+---
+
+## Phase 20 — Training Recipe Primitives
+
+**Rationale**: Every training entry assumes the "recipe" — optimizer schedule, stability tricks, activation choices, data mix. These are short but universal, and the cross-references compound across every model-family entry.
+
+| # | Topic | Directory | Why |
+|---|-------|-----------|-----|
+| 70 | Training Stability — Loss Spikes, Z-loss, muP | `foundational/training-stability/` | Loss-spike detection + skip/restart, Z-loss regularization (PaLM, Gemini), muP (Maximal Update Parametrization) for HP transfer across scale, weight init schemes; every frontier paper mentions these in passing |
+| 71 | LR Schedules & Optimizers | `foundational/lr-schedules-optimizers/` | WSD (warmup-stable-decay) as the new default, cosine vs WSD, Adafactor (memory-efficient), Lion (sign-momentum), Sophia (Hessian-aware); how batch-size / LR scaling laws interact |
+| 72 | Activation & Norm Primitives | `foundational/activation-norm-primitives/` | SwiGLU (Llama/Mistral default), GeGLU, RMSNorm vs LayerNorm economics, QK-norm (stability), post-LN vs pre-LN; the architecture-level building blocks every modern transformer uses |
+| 73 | Synthetic Data for Training | `foundational/synthetic-data/` | Phi series (filtered web + synthetic textbooks), Nemotron-4 340B as a reward-model+data-gen model, R1-distill data pipelines, Self-Instruct / Evol-Instruct; the data-side partner to Knowledge Distillation |
+
+**Cross-references to seed**: Training Stability → Megatron-LM, Llama 3, Grok/Colossus, Mixed Precision. LR Schedules → Scaling Laws, all model-family entries. Activation/Norm → GQA, RoPE, Mamba, Llama 3, Qwen3, DeepSeek V3. Synthetic Data → Knowledge Distillation, Data Pipeline, DeepSeek R1 (distill models), Apple AFM.
+
+---
+
+## Phase 21 — Frontier Model Family & Reasoning Landscape
+
+**Rationale**: Three remaining high-profile frontier-model gaps. Gemini and Nemotron are concrete infra stories; the reasoning-model landscape entry synthesizes across existing R1/Qwen3/inference-time-scaling entries to cover publicly-known-or-speculated o-series and Claude thinking mode. More narrative than Phases 19–20, lowest leverage but closes the frontier-family coverage.
+
+| # | Topic | Directory | Why |
+|---|-------|-----------|-----|
+| 74 | Google Gemini 1.5 / 2.0 | `google/gemini/` | Native multimodal from pretraining (audio + video + image + text), 2M-token context, MoE family (Pro/Flash/Nano); TPU-first training stack; notable for long-context infra |
+| 75 | NVIDIA Nemotron | `nvidia/nemotron/` | 340B base + reward + instruct family; synthetic-data pipeline (86% synthetic in Nemotron-4-340B-Instruct SFT); NeMo training stack; TransformerEngine + Megatron-Core reference consumer |
+| 76 | Reasoning Models Landscape | `foundational/reasoning-models/` | Meta-analysis across o1/o3 (publicly known), Claude 3.7/4 thinking, DeepSeek R1, Qwen3 thinking mode; infra implications of long-CoT: KV cache growth, thinking-token economics, budget-forcing, hidden-reasoning pricing models |
+
+**Cross-references to seed**: Gemini → Pathways, GSPMD, Gemma 2 (smaller sibling), Ring Attention (2M context peer), DiT/multimodal. Nemotron → TransformerEngine, Megatron-Core, Knowledge Distillation, Synthetic Data (Phase 20), CUTLASS. Reasoning Models → Inference-Time Scaling, Process Reward Models, R1, Qwen3, GRPO.
+
+---
+
 ## Execution Notes
 
+- **Priority order (Phases 19–21)**: Phase 19 first — reference-framework entries referenced by nearly every existing topic; returns compound. Phase 20 second — recipe primitives that universally sit under every training entry. Phase 21 last — narrative frontier-model entries; valuable for completeness but lower leverage.
 - **Priority order (Phases 16–18)**: Phase 16 first — fills the library-layer gap under paper-level entries; highest internal-coherence leverage. Phase 17 second — architectural breadth and serving-engine completeness. Phase 18 last — orthogonal axes (evaluation infra, confidential inference); valuable for framing but less referenced by existing entries.
 - **Historical priority (Phases 13–15)**: Phase 13 (stack completeness) first — each entry fills a gap already implicitly referenced by existing entries, so returns compound across the repo. Phase 14 (agent infra) second — highest strategic value but introduces a new axis, worth doing after internal coherence is improved. Phase 15 (lab completeness) last — valuable but narrative-heavy and lower leverage than the technical gaps in 13.
 - **Each topic**: `en.md` + `zh.md`, update `README.md` + `README.zh.md` index. Phase 10 also needs new `multimodal/` section headers in both READMEs.
