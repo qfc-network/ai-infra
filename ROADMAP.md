@@ -149,6 +149,18 @@ All three entries complete: DeepSpeed (Microsoft), Cutlass (NVIDIA), TensorRT-LL
 
 ---
 
+## Phase 14b — Secure Agent Deployment (new guide)
+
+**Rationale**: Demand signal from platform engineers / DevOps-to-AI-infra audience: they want to deploy agents in private/regulated environments, not just cloud. Complements the existing `guides/devops-to-ai-infra/` and `guides/on-prem-llm-deployment/` guides. Covers the intersection of Phase 14's agent infra topics with on-prem security requirements.
+
+| # | Topic | Directory | Why |
+|---|-------|-----------|-----|
+| — | Secure On-Prem Agent Deployment | `guides/secure-agent-deployment/` | Tool-call sandboxing (network isolation, syscall filtering); local LLM as agent backbone for data-residency compliance; MCP server permission boundaries; secret management in agentic loops; pairs with on-prem-llm-deployment guide |
+
+**Cross-references to seed**: on-prem-llm-deployment guide (hardware/software stack), tool-use-infra (what tools need sandboxing), MCP (permission model), computer-use (highest-risk action surface), agent-frameworks (where the loop lives).
+
+---
+
 ## Phase 15 — Frontier Lab Completeness
 
 **Rationale**: Three major lab-level infra stories currently absent from the repo. Lower priority than Phases 13–14 because entries are more narrative than technical-reference, but important for "frontier labs infra" framing.
