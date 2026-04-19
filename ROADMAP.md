@@ -2,7 +2,7 @@
 
 ## Context
 
-The repo currently has 82 topics plus 3 guides across training, inference, architectures, open-source infra, and multimodal. The goal is to systematically fill the gaps — topics that are either directly referenced by existing write-ups or are widely used in practice but not yet covered. Each new entry follows the established template: ~2,000–2,500 words, 1–2 equations, one Engineering Tradeoffs table (4–6 rows), both `en.md` and `zh.md`, and an update to the root `README.md` / `README.zh.md` index.
+The repo currently has 85 topics plus 3 guides across training, inference, architectures, open-source infra, and multimodal. The goal is to systematically fill the gaps — topics that are either directly referenced by existing write-ups or are widely used in practice but not yet covered. Each new entry follows the established template: ~2,000–2,500 words, 1–2 equations, one Engineering Tradeoffs table (4–6 rows), both `en.md` and `zh.md`, and an update to the root `README.md` / `README.zh.md` index.
 
 ---
 
@@ -151,17 +151,13 @@ All three entries complete: DeepSpeed (Microsoft), Cutlass (NVIDIA), TensorRT-LL
 
 ---
 
-## Phase 15 — Frontier Lab Completeness
+## Phase 15 — Frontier Lab Completeness ✓
 
-**Rationale**: Three major lab-level infra stories currently absent from the repo. Lower priority than Phases 13–14 because entries are more narrative than technical-reference, but important for "frontier labs infra" framing.
-
-| # | Topic | Directory | Why |
-|---|-------|-----------|-----|
-| 52 | xAI Grok + Colossus | `xai/grok-colossus/` | Largest single-site training cluster currently operating (100k+ H100, 200k target); Memphis deployment; story of building at that scale |
-| 53 | ByteDance Seed / Doubao | `bytedance/seed/` | Major Chinese frontier lab; Doubao model series; origin lab for verl and HybridFlow; infra choices reflective of Chinese scaling constraints |
-| 54 | Apple Foundation Models (AFM) | `apple/afm/` | On-device LLM inference as a distinct infra regime: server + device models, Private Cloud Compute, MLX at lab scale; different tradeoffs than cloud-only labs |
-
-**Cross-references to seed**: Grok/Colossus → Llama 3 (comparative cluster-scale infra), GPU Interconnect. ByteDance Seed → verl (originated here), DeepSeek (peer Chinese lab). Apple AFM → the on-prem-llm-deployment guide (MLX section), Mamba-SSM (on-device architecture tradeoffs).
+| # | Topic | Directory | Status |
+|---|-------|-----------|--------|
+| 52 | xAI Grok + Colossus | `xai/grok-colossus/` | ✓ done |
+| 53 | ByteDance Seed / Doubao | `bytedance/seed/` | ✓ done |
+| 54 | Apple Foundation Models (AFM) | `apple/afm/` | ✓ done |
 
 ---
 

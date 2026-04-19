@@ -114,6 +114,15 @@ Every paper gets both an English (`en.md`) and Chinese (`zh.md`) write-up using 
 - [TensorRT-LLM](./nvidia/tensorrt-llm/) — AOT-compiled LLM inference; paged KV cache, FP8, continuous batching at H100 peak
 - [Dynamo](./nvidia/dynamo/) — disaggregated inference orchestration; KV-aware routing; prefill/decode pool management; TensorRT-LLM integration
 
+### xAI
+- [Grok + Colossus](./xai/grok-colossus/) — 314B MoE Grok-1; 100k H100 single-site Memphis cluster; 4D parallelism at frontier scale; single-site AllReduce latency advantage
+
+### ByteDance
+- [Seed / Doubao](./bytedance/seed/) — MegaScale fault tolerance at 12k GPUs; verl/HybridFlow origin lab; H800 export-control constraints; PD-disaggregated inference at 100M+ QPS
+
+### Apple
+- [Foundation Models (AFM)](./apple/afm/) — on-device 3B (4-bit palettized) + Private Cloud Compute; Apple Silicon attestation-based privacy; MLX unified memory; two-tier routing
+
 ### Anthropic
 - [Building Effective Agents](./anthropic/building-effective-agents/) — workflow vs agent, five workflow patterns
 - [Model Context Protocol (MCP)](./anthropic/mcp/) — LSP for LLMs; tools / resources / prompts via JSON-RPC

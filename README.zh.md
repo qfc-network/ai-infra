@@ -114,6 +114,15 @@
 - [TensorRT-LLM](./nvidia/tensorrt-llm/) — AOT 编译 LLM 推理引擎；分页 KV cache、FP8、H100 峰值性能连续批处理
 - [Dynamo](./nvidia/dynamo/) — 解耦推理编排；KV 感知路由；prefill/decode 资源池管理；TensorRT-LLM 集成
 
+### xAI
+- [Grok + Colossus](./xai/grok-colossus/) — 314B MoE Grok-1；孟菲斯 10 万张 H100 单站点集群；前沿规模 4D 并行；单站点 AllReduce 延迟优势
+
+### ByteDance
+- [Seed / Doubao](./bytedance/seed/) — MegaScale 12k GPU 容错训练；verl/HybridFlow 发源地；H800 出口管制约束；1 亿+ QPS PD 解耦推理
+
+### Apple
+- [Foundation Models (AFM)](./apple/afm/) — 端侧 3B（4-bit 调色板量化）+ 私有云计算；Apple Silicon 基于硬件证明的隐私架构；MLX 统一内存；两级路由
+
 ### Anthropic
 - [Building Effective Agents](./anthropic/building-effective-agents/) — workflow 与 agent 的区分、五种 workflow 模式
 - [Model Context Protocol (MCP)](./anthropic/mcp/) — LLM 的 LSP；tools / resources / prompts over JSON-RPC
