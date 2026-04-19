@@ -2,7 +2,7 @@
 
 ## Context
 
-The repo currently has 78 topics plus 2 guides across training, inference, architectures, open-source infra, and multimodal. The goal is to systematically fill the gaps — topics that are either directly referenced by existing write-ups or are widely used in practice but not yet covered. Each new entry follows the established template: ~2,000–2,500 words, 1–2 equations, one Engineering Tradeoffs table (4–6 rows), both `en.md` and `zh.md`, and an update to the root `README.md` / `README.zh.md` index.
+The repo currently has 82 topics plus 3 guides across training, inference, architectures, open-source infra, and multimodal. The goal is to systematically fill the gaps — topics that are either directly referenced by existing write-ups or are widely used in practice but not yet covered. Each new entry follows the established template: ~2,000–2,500 words, 1–2 equations, one Engineering Tradeoffs table (4–6 rows), both `en.md` and `zh.md`, and an update to the root `README.md` / `README.zh.md` index.
 
 ---
 
@@ -134,30 +134,20 @@ All three entries complete: DeepSpeed (Microsoft), Cutlass (NVIDIA), TensorRT-LL
 
 ---
 
-## Phase 14 — Agent Infrastructure (new strategic axis)
+## Phase 14 — Agent Infrastructure ✓
 
-**Rationale**: The Anthropic section has theory (MCP, Building Effective Agents); zero coverage of how agent systems are actually built and evaluated in production. This is where frontier-lab infra investment is going in 2026.
+| # | Topic | Directory | Status |
+|---|-------|-----------|--------|
+| 48 | Tool Use / Function Calling Infrastructure | `foundational/tool-use-infra/` | ✓ done |
+| 49 | Agent Framework Landscape | `foundational/agent-frameworks/` | ✓ done |
+| 50 | Computer Use & Browser Automation | `anthropic/computer-use/` | ✓ done |
+| 51 | Agent Evaluation Infrastructure | `foundational/agent-evaluation/` | ✓ done |
 
-| # | Topic | Directory | Why |
-|---|-------|-----------|-----|
-| 48 | Tool Use / Function Calling Infrastructure | `foundational/tool-use-infra/` | Parallel tool calls, schema validation, tool-call trajectories, safety layers; how OpenAI / Anthropic / Gemini function-calling protocols actually work in serving |
-| 49 | Agent Framework Landscape | `foundational/agent-frameworks/` | LangGraph (stateful graphs), AutoGen (multi-agent), OpenAI Swarm (handoffs), DSPy (prompt compilation); when to use which, tradeoffs, infra implications |
-| 50 | Computer Use & Browser Automation | `anthropic/computer-use/` | Anthropic's Computer Use model + API; screenshot-based visual grounding, action space, latency economics; pairs naturally with VLM Serving entry |
-| 51 | Agent Evaluation Infrastructure | `foundational/agent-evaluation/` | SWE-bench (code agents), TAU-bench (customer service), WebArena (browser agents); how agent workloads are actually graded; why this is harder than LM benchmarks |
+## Phase 14b — Secure Agent Deployment ✓
 
-**Cross-references to seed**: Tool Use → MCP, Building Effective Agents. Agent Frameworks → Building Effective Agents, SGLang. Computer Use → VLM Serving, LLaVA. Agent Evaluation → Inference-Time Scaling, Process Reward Models.
-
----
-
-## Phase 14b — Secure Agent Deployment (new guide)
-
-**Rationale**: Demand signal from platform engineers / DevOps-to-AI-infra audience: they want to deploy agents in private/regulated environments, not just cloud. Complements the existing `guides/devops-to-ai-infra/` and `guides/on-prem-llm-deployment/` guides. Covers the intersection of Phase 14's agent infra topics with on-prem security requirements.
-
-| # | Topic | Directory | Why |
-|---|-------|-----------|-----|
-| — | Secure On-Prem Agent Deployment | `guides/secure-agent-deployment/` | Tool-call sandboxing (network isolation, syscall filtering); local LLM as agent backbone for data-residency compliance; MCP server permission boundaries; secret management in agentic loops; pairs with on-prem-llm-deployment guide |
-
-**Cross-references to seed**: on-prem-llm-deployment guide (hardware/software stack), tool-use-infra (what tools need sandboxing), MCP (permission model), computer-use (highest-risk action surface), agent-frameworks (where the loop lives).
+| # | Topic | Directory | Status |
+|---|-------|-----------|--------|
+| — | Secure On-Prem Agent Deployment (guide) | `guides/secure-agent-deployment/` | ✓ done |
 
 ---
 

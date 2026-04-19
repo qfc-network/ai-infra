@@ -62,6 +62,9 @@
 - [序列并行变体 — Ulysses 与 Megatron-CP](./foundational/sequence-parallelism/) — head 维度 all-to-all（Ulysses）；因果奇偶交错（Megatron-CP）；与 Ring Attention 共同完成序列轴并行全景
 - [torch.compile / Inductor](./foundational/torch-compile/) — TorchDynamo 字节码追踪；AOTAutograd 联合图；Inductor Triton 代码生成；算子融合；CUDA Graphs
 - [大规模知识蒸馏](./foundational/knowledge-distillation/) — 带温度的软标签损失；白盒/黑盒/序列级蒸馏；R1 蒸馏流程；Gemma 2 logit 软截断
+- [工具调用基础设施](./foundational/tool-use-infra/) — JSON Schema 工具定义；并行工具调用分发；流式 delta 解析；安全层；上下文窗口增长分析
+- [Agent 框架全景](./foundational/agent-frameworks/) — LangGraph 有状态图；AutoGen 多 agent 对话；OpenAI Swarm 移交模式；DSPy 提示编译；状态持久化与 p99 延迟权衡
+- [Agent 评测基础设施](./foundational/agent-evaluation/) — SWE-bench、TAU-bench、WebArena；超越二元通过率的轨迹指标；沙箱评测环境；LLM-as-judge 校准
 
 ### 多模态
 - [CLIP — 对比语言-图像预训练](./multimodal/clip/) — 双编码器对比目标；N² 对上的 InfoNCE 损失；零样本分类；网络规模训练
@@ -115,6 +118,7 @@
 - [Building Effective Agents](./anthropic/building-effective-agents/) — workflow 与 agent 的区分、五种 workflow 模式
 - [Model Context Protocol (MCP)](./anthropic/mcp/) — LLM 的 LSP；tools / resources / prompts over JSON-RPC
 - [Constitutional AI](./anthropic/constitutional-ai/) — 批判-修订循环 + RLAIF；基于 AI 反馈的无害性对齐
+- [Computer Use 与浏览器自动化](./anthropic/computer-use/) — 基于截图的像素级动作空间；视觉定位；单步延迟分解；容器沙箱隔离
 
 ## 指南
 
@@ -122,6 +126,7 @@
 
 - [DevOps 工程师如何切入 AI Infra](./guides/devops-to-ai-infra/) — 可迁移技能、需补缺口、三条垂直路径（集群运维 / 推理平台 / 训练基础设施）、6 个月里程碑
 - [本地大模型部署指南](./guides/on-prem-llm-deployment/) — 从 Mac Studio + Ollama 到多节点 GPU 集群；硬件选型、软件栈、成本参考、决策流程图
+- [安全私有化 Agent 部署指南](./guides/secure-agent-deployment/) — 工具调用沙箱（gVisor、NetworkPolicy、seccomp）；MCP 权限边界；Agent 循环中的 secret 管理；最小安全栈参考
 
 ## 贡献
 

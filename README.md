@@ -62,6 +62,9 @@ Every paper gets both an English (`en.md`) and Chinese (`zh.md`) write-up using 
 - [Sequence Parallelism Variants — Ulysses & Megatron-CP](./foundational/sequence-parallelism/) — all-to-all on head dim (Ulysses); causal even-odd interleaving (Megatron-CP); completes the sequence-axis parallelism story with Ring Attention
 - [torch.compile / Inductor](./foundational/torch-compile/) — TorchDynamo bytecode tracing; AOTAutograd joint graph; Inductor Triton codegen; operator fusion; CUDA Graphs
 - [Knowledge Distillation at Scale](./foundational/knowledge-distillation/) — soft label loss with temperature; white-box / black-box / sequence-level regimes; R1 distillation pipeline; Gemma 2 logit soft-capping
+- [Tool Use / Function Calling Infrastructure](./foundational/tool-use-infra/) — JSON schema tool definitions; parallel tool call dispatch; streaming delta parsing; safety layers; context window growth arithmetic
+- [Agent Framework Landscape](./foundational/agent-frameworks/) — LangGraph stateful graphs; AutoGen multi-agent conversations; OpenAI Swarm handoffs; DSPy prompt compilation; state persistence and p99 latency tradeoffs
+- [Agent Evaluation Infrastructure](./foundational/agent-evaluation/) — SWE-bench, TAU-bench, WebArena; trajectory metrics beyond binary pass/fail; sandboxed eval environments; LLM-as-judge calibration
 
 ### Multimodal
 - [CLIP — Contrastive Language-Image Pretraining](./multimodal/clip/) — dual-encoder contrastive objective; InfoNCE loss over N² pairs; zero-shot classification; web-scale training
@@ -115,6 +118,7 @@ Every paper gets both an English (`en.md`) and Chinese (`zh.md`) write-up using 
 - [Building Effective Agents](./anthropic/building-effective-agents/) — workflow vs agent, five workflow patterns
 - [Model Context Protocol (MCP)](./anthropic/mcp/) — LSP for LLMs; tools / resources / prompts via JSON-RPC
 - [Constitutional AI](./anthropic/constitutional-ai/) — critique-revision loop + RLAIF; harmlessness from AI feedback
+- [Computer Use & Browser Automation](./anthropic/computer-use/) — screenshot-based pixel-level action space; visual grounding; per-step latency arithmetic; container sandboxing
 
 ## Guides
 
@@ -122,6 +126,7 @@ Career and onboarding guides — engineering-first, minimal ML algorithm prerequ
 
 - [From DevOps to AI Infrastructure](./guides/devops-to-ai-infra/) — skills that transfer, gaps to fill, three vertical paths (cluster ops / inference platform / training infra), 6-month milestones
 - [On-Premise LLM Deployment](./guides/on-prem-llm-deployment/) — from Mac Studio + Ollama to multi-node GPU clusters; hardware sizing, software stack, cost reference, decision flowchart
+- [Secure On-Prem Agent Deployment](./guides/secure-agent-deployment/) — tool call sandboxing (gVisor, NetworkPolicy, seccomp); MCP permission boundaries; secret management in agent loops; minimal secure stack reference
 
 ## Contributing
 
