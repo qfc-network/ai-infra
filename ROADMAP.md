@@ -2,7 +2,7 @@
 
 ## Context
 
-The repo currently has 85 topics plus 3 guides across training, inference, architectures, open-source infra, and multimodal. The goal is to systematically fill the gaps — topics that are either directly referenced by existing write-ups or are widely used in practice but not yet covered. Each new entry follows the established template: ~2,000–2,500 words, 1–2 equations, one Engineering Tradeoffs table (4–6 rows), both `en.md` and `zh.md`, and an update to the root `README.md` / `README.zh.md` index.
+The repo currently has 96 topics plus 3 guides across training, inference, architectures, open-source infra, and multimodal. The goal is to systematically fill the gaps — topics that are either directly referenced by existing write-ups or are widely used in practice but not yet covered. Each new entry follows the established template: ~2,000–2,500 words, 1–2 equations, one Engineering Tradeoffs table (4–6 rows), both `en.md` and `zh.md`, and an update to the root `README.md` / `README.zh.md` index.
 
 ---
 
@@ -163,47 +163,35 @@ Phases 1–15 shipped 54 entries across foundational / multimodal / vendor secti
 
 ---
 
-## Phase 16 — Training Infrastructure Primitives (recommended next)
+## Phase 16 — Training Infrastructure Primitives ✓
 
-**Rationale**: Phases 1–15 are paper-level. The libraries those papers actually depend on — TransformerEngine, NCCL, Megatron-Core, PyTorch DCP — appear by name throughout the repo but have no standalone treatment. These entries are what a cluster engineer needs to debug a real training job, and they're high leverage because every training entry already links to them implicitly.
-
-| # | Topic | Directory | Why |
-|---|-------|-----------|-----|
-| 55 | NVIDIA TransformerEngine | `nvidia/transformer-engine/` | FP8 primitives library: `Linear`, `LayerNormLinear`, FP8 autocast, per-tensor scaling meta; the layer between Hopper wgmma and Megatron/FSDP; Nemotron, Llama 3, and Grok training stacks all route through it |
-| 56 | NCCL Internals | `foundational/nccl/` | Ring vs tree all-reduce, PXN intra-node routing, SHARP in-network reduction on Quantum-2 IB; NVLS for NVLink-switched domains; debugging env vars (`NCCL_ALGO`, `NCCL_PROTO`); the collective library every training entry assumes |
-| 57 | Megatron-Core vs Megatron-LM | `nvidia/megatron-core/` | Modular library that superseded the 2021 paper's monolithic scripts; `TransformerLayer`, `ParallelState`, context parallelism API; used by Nemotron, NeMo, Grok; our `foundational/megatron-lm/` covers the paper — this covers the production library |
-| 58 | Async Checkpointing & PyTorch DCP | `foundational/distributed-checkpointing/` | `torch.distributed.checkpoint` sharded format; async writes to object storage; in-memory checkpointing (ZeRO / DeepSpeed); recovery-bandwidth vs iteration-time tradeoff; what Llama 3's 54-day run actually ran on |
-
-**Cross-references to seed**: TransformerEngine → Hopper primer, mixed-precision, FlashAttention-3, FSDP. NCCL → GPU Interconnect primer, ZeRO/FSDP, Megatron-LM, DeepEP (IBGDA is a peer optimization). Megatron-Core → Megatron-LM (paper), Llama 3, Grok/Colossus, sequence-parallelism (uses Megatron-Core CP). Distributed Checkpointing → ZeRO/FSDP, DualPipe, Llama 3, 3FS (storage substrate).
+| # | Topic | Directory | Status |
+|---|-------|-----------|--------|
+| 55 | NVIDIA TransformerEngine | `nvidia/transformer-engine/` | ✓ done |
+| 56 | NCCL Internals | `foundational/nccl/` | ✓ done |
+| 57 | Megatron-Core | `nvidia/megatron-core/` | ✓ done |
+| 58 | Async Checkpointing & PyTorch DCP | `foundational/distributed-checkpointing/` | ✓ done |
 
 ---
 
-## Phase 17 — Architectural & Serving Breadth
+## Phase 17 — Architectural & Serving Breadth ✓
 
-**Rationale**: Close the MoE arc (Expert Choice, Loss-Free Balancing — referenced by DeepSeek V3 but not covered), add the hybrid SSM-Transformer line (where Mamba actually shipped), and cover the on-device + Chinese-lab serving stacks that complete the serving-engine set (TGI / vLLM / SGLang / TRT-LLM / Dynamo are in; llama.cpp and LMDeploy are not).
-
-| # | Topic | Directory | Why |
-|---|-------|-----------|-----|
-| 59 | MoE Routing Improvements — Expert Choice & Loss-Free Balancing | `foundational/moe-routing/` | Expert Choice inverts the token→expert assignment (experts pick tokens); Loss-Free Balancing (DeepSeek V3) uses a bias term instead of an auxiliary loss; fine-grained + shared expert patterns; completes the MoE arc from Switch/GShard → Mixtral → DeepSeekMoE |
-| 60 | Jamba / Hybrid SSM-Transformer | `foundational/hybrid-ssm/` | AI21 Jamba (52B, 7B active, Mamba-Transformer blocks interleaved); Nemotron-H; why hybrids work where pure SSMs plateaued; long-context economics; natural complement to our Mamba entry |
-| 61 | llama.cpp & GGUF | `foundational/llama-cpp/` | GGUF format (quantization + metadata); CPU+GPU hybrid offload; Metal/CUDA/Vulkan backends; the substrate under Ollama / LM Studio; on-device inference at scale |
-| 62 | LMDeploy / TurboMind | `foundational/lmdeploy/` | Shanghai AI Lab's serving engine; W4A16 AWQ kernels; FP8 KV cache; high-throughput Chinese-lab serving; peer to TGI/vLLM/SGLang |
-
-**Cross-references to seed**: MoE Routing → Switch/GShard, DeepSeekMoE, Mixtral, DeepSeek V3. Jamba → Mamba-SSM (prerequisite), Ring Attention (long-context peer). llama.cpp → on-prem-llm-deployment guide (MLX section), weight-quantization (GGUF is a quantization format family), Apple AFM. LMDeploy → TGI, vLLM, SGLang, TensorRT-LLM, weight-quantization (AWQ originated nearby).
+| # | Topic | Directory | Status |
+|---|-------|-----------|--------|
+| 59 | MoE Routing Improvements — Expert Choice & Loss-Free Balancing | `foundational/moe-routing/` | ✓ done |
+| 60 | Jamba / Hybrid SSM-Transformer | `foundational/hybrid-ssm/` | ✓ done |
+| 61 | llama.cpp & GGUF | `foundational/llama-cpp/` | ✓ done |
+| 62 | LMDeploy / TurboMind | `foundational/lmdeploy/` | ✓ done |
 
 ---
 
-## Phase 18 — Evaluation & Confidential Inference
+## Phase 18 — Evaluation & Confidential Inference ✓
 
-**Rationale**: Phase 14 covered agent evaluation. Base LLM evaluation — the lm-eval-harness plumbing that every model-family entry cites without explaining — is still missing. Confidential inference pairs naturally with the secure-agent-deployment guide (Phase 14b) and closes the security story.
-
-| # | Topic | Directory | Why |
-|---|-------|-----------|-----|
-| 63 | LLM Evaluation Harness | `foundational/eval-harness/` | lm-eval-harness internals; task definitions (MMLU, GSM8K, HumanEval, BBH); log-likelihood vs generation scoring; few-shot template plumbing; the OpenLLM Leaderboard pipeline |
-| 64 | Chatbot Arena & Pairwise Eval | `foundational/chatbot-arena/` | LMSYS infrastructure; Bradley-Terry + Elo rating; pairwise prompt collection at scale; MT-Bench + LLM-as-judge; why this supplanted static benchmarks for chat models |
-| 65 | Confidential LLM Inference | `foundational/confidential-inference/` | H100 Confidential Computing (CC mode, attestation); AWS Nitro Enclaves; Azure Confidential VMs; TEE-gated serving; latency + cost overhead; natural follow-up to `guides/secure-agent-deployment/` |
-
-**Cross-references to seed**: Eval Harness → every model-family entry (Llama 3, Qwen3, Gemma 2, DeepSeek R1, Apple AFM — all cite benchmark numbers from this pipeline), Inference-Time Scaling, Process Reward Models. Chatbot Arena → RLHF, DPO, SimPO (preference data economics). Confidential Inference → secure-agent-deployment guide, Hopper primer (CC mode is a hardware feature), Apple AFM (Private Cloud Compute is a peer design).
+| # | Topic | Directory | Status |
+|---|-------|-----------|--------|
+| 63 | LLM Evaluation Harness | `foundational/eval-harness/` | ✓ done |
+| 64 | Chatbot Arena & Pairwise Eval | `foundational/chatbot-arena/` | ✓ done |
+| 65 | Confidential LLM Inference | `foundational/confidential-inference/` | ✓ done |
 
 ---
 

@@ -65,6 +65,15 @@
 - [工具调用基础设施](./foundational/tool-use-infra/) — JSON Schema 工具定义；并行工具调用分发；流式 delta 解析；安全层；上下文窗口增长分析
 - [Agent 框架全景](./foundational/agent-frameworks/) — LangGraph 有状态图；AutoGen 多 agent 对话；OpenAI Swarm 移交模式；DSPy 提示编译；状态持久化与 p99 延迟权衡
 - [Agent 评测基础设施](./foundational/agent-evaluation/) — SWE-bench、TAU-bench、WebArena；超越二元通过率的轨迹指标；沙箱评测环境；LLM-as-judge 校准
+- [NCCL 内部机制](./foundational/nccl/) — Ring vs Tree AllReduce；LL/LL128 协议；NVLS 交换机内规约；SHARP IB 卸载；IBGDA；拓扑检测与调试环境变量
+- [异步 Checkpoint 与 PyTorch DCP](./foundational/distributed-checkpointing/) — 分片保存/可重新分片加载；异步内存复制；ZeRO 分片格式；checkpoint 频率优化；恢复带宽分析
+- [MoE 路由改进 — Expert Choice 与 Loss-Free Balancing](./foundational/moe-routing/) — Expert Choice 反向分配；Loss-Free Balancing 偏置更新规则；细粒度+共享专家模式；完成 MoE 路由全景
+- [Jamba / 混合 SSM-Transformer](./foundational/hybrid-ssm/) — Mamba+Attention 交错块；256k 上下文 KV cache 压缩；decode 经济性；纯 SSM 在召回任务上的瓶颈
+- [llama.cpp & GGUF](./foundational/llama-cpp/) — GGUF 二进制格式；Q4_K_M 超块量化；CPU+GPU 混合卸载；Metal/CUDA 后端；Ollama 的底层基础
+- [LMDeploy / TurboMind](./foundational/lmdeploy/) — W4A16 AWQ 自定义 CUDA kernel；MLA 感知 KV cache；FP8 KV；H100 吞吐量对比；Qwen/DeepSeek 一级支持
+- [LLM 评测框架](./foundational/eval-harness/) — lm-eval-harness；log-likelihood vs 生成评分；MMLU/GSM8K/HumanEval 管线；pass@k 公式；Open LLM Leaderboard 基础设施
+- [Chatbot Arena 与成对评估](./foundational/chatbot-arena/) — Bradley-Terry 模型；Elo 评分；百万级人类偏好投票；MT-Bench LLM-as-judge；Arena Hard；静态基准饱和原因
+- [机密 LLM 推理](./foundational/confidential-inference/) — H100 CC 模式证明；AWS Nitro Enclave；Azure SEV-SNP；TEE 门控服务模式；5–10% 延迟开销；20–30% 成本溢价
 
 ### 多模态
 - [CLIP — 对比语言-图像预训练](./multimodal/clip/) — 双编码器对比目标；N² 对上的 InfoNCE 损失；零样本分类；网络规模训练
@@ -113,6 +122,8 @@
 - [CUTLASS](./nvidia/cutlass/) — C++ GEMM 模板层级；FlashAttention、DeepGEMM 和 cuBLAS 的底层算子库
 - [TensorRT-LLM](./nvidia/tensorrt-llm/) — AOT 编译 LLM 推理引擎；分页 KV cache、FP8、H100 峰值性能连续批处理
 - [Dynamo](./nvidia/dynamo/) — 解耦推理编排；KV 感知路由；prefill/decode 资源池管理；TensorRT-LLM 集成
+- [TransformerEngine](./nvidia/transformer-engine/) — FP8 即插即用模块（te.Linear、te.TransformerLayer）；E4M3/E5M2 格式分工；DelayedScaling amax 历史；端到端训练提速 1.3–1.6×
+- [Megatron-Core](./nvidia/megatron-core/) — 超越 2021 论文的模块化库；ParallelState、TransformerConfig、mcore DDP；CP 集成；TE 路由；Nemotron、NeMo、Grok 均在使用
 
 ### xAI
 - [Grok + Colossus](./xai/grok-colossus/) — 314B MoE Grok-1；孟菲斯 10 万张 H100 单站点集群；前沿规模 4D 并行；单站点 AllReduce 延迟优势

@@ -65,6 +65,15 @@ Every paper gets both an English (`en.md`) and Chinese (`zh.md`) write-up using 
 - [Tool Use / Function Calling Infrastructure](./foundational/tool-use-infra/) — JSON schema tool definitions; parallel tool call dispatch; streaming delta parsing; safety layers; context window growth arithmetic
 - [Agent Framework Landscape](./foundational/agent-frameworks/) — LangGraph stateful graphs; AutoGen multi-agent conversations; OpenAI Swarm handoffs; DSPy prompt compilation; state persistence and p99 latency tradeoffs
 - [Agent Evaluation Infrastructure](./foundational/agent-evaluation/) — SWE-bench, TAU-bench, WebArena; trajectory metrics beyond binary pass/fail; sandboxed eval environments; LLM-as-judge calibration
+- [NCCL Internals](./foundational/nccl/) — ring vs tree AllReduce; LL/LL128 protocols; NVLS in-fabric reduction; SHARP IB offload; IBGDA; topology detection and key debug env vars
+- [Async Checkpointing & PyTorch DCP](./foundational/distributed-checkpointing/) — sharded save/reshardable load; async in-memory copy; ZeRO sharded format; checkpoint frequency optimization; recovery bandwidth arithmetic
+- [MoE Routing Improvements — Expert Choice & Loss-Free Balancing](./foundational/moe-routing/) — Expert Choice inverted assignment; Loss-Free Balancing bias update rule; fine-grained+shared pattern; closes the MoE routing arc
+- [Jamba / Hybrid SSM-Transformer](./foundational/hybrid-ssm/) — interleaved Mamba+Attention blocks; KV cache reduction at 256k context; decode economics; why pure SSMs plateaued on recall tasks
+- [llama.cpp & GGUF](./foundational/llama-cpp/) — GGUF binary format; Q4_K_M super-block quantization; CPU+GPU hybrid offload; Metal/CUDA backends; the substrate under Ollama
+- [LMDeploy / TurboMind](./foundational/lmdeploy/) — W4A16 AWQ custom CUDA kernels; MLA-aware KV cache; FP8 KV; H100 throughput vs vLLM/TGI; first-class Qwen/DeepSeek support
+- [LLM Evaluation Harness](./foundational/eval-harness/) — lm-eval-harness; log-likelihood vs generation scoring; MMLU/GSM8K/HumanEval plumbing; pass@k formula; Open LLM Leaderboard pipeline
+- [Chatbot Arena & Pairwise Evaluation](./foundational/chatbot-arena/) — Bradley-Terry model; Elo rating; 1M+ human preference votes; MT-Bench LLM-as-judge; Arena Hard; why static benchmarks saturated
+- [Confidential LLM Inference](./foundational/confidential-inference/) — H100 CC mode attestation; AWS Nitro Enclaves; Azure SEV-SNP; TEE-gated serving pattern; 5–10% latency overhead; 20–30% cost premium
 
 ### Multimodal
 - [CLIP — Contrastive Language-Image Pretraining](./multimodal/clip/) — dual-encoder contrastive objective; InfoNCE loss over N² pairs; zero-shot classification; web-scale training
@@ -113,6 +122,8 @@ Every paper gets both an English (`en.md`) and Chinese (`zh.md`) write-up using 
 - [CUTLASS](./nvidia/cutlass/) — C++ GEMM template hierarchy; the kernel library under FlashAttention, DeepGEMM, and cuBLAS
 - [TensorRT-LLM](./nvidia/tensorrt-llm/) — AOT-compiled LLM inference; paged KV cache, FP8, continuous batching at H100 peak
 - [Dynamo](./nvidia/dynamo/) — disaggregated inference orchestration; KV-aware routing; prefill/decode pool management; TensorRT-LLM integration
+- [TransformerEngine](./nvidia/transformer-engine/) — FP8 drop-in modules (te.Linear, te.TransformerLayer); E4M3/E5M2 format split; DelayedScaling amax history; 1.3–1.6× end-to-end training speedup
+- [Megatron-Core](./nvidia/megatron-core/) — modular library superseding the 2021 paper; ParallelState, TransformerConfig, mcore DDP; CP integration; TE routing; used by Nemotron, NeMo, Grok
 
 ### xAI
 - [Grok + Colossus](./xai/grok-colossus/) — 314B MoE Grok-1; 100k H100 single-site Memphis cluster; 4D parallelism at frontier scale; single-site AllReduce latency advantage
