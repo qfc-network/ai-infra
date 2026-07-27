@@ -109,6 +109,7 @@
 
 ### Moonshot
 - [Mooncake](./moonshot/mooncake/) — KVCache 为中心的解耦推理；PD 解耦；缓存池
+- [Kimi K3 Infra 技术栈](./moonshot/kimi-k3-infra/) — MoonEP 平衡专家并行；FlashKDA CUTLASS kernel；AgentENV Firecracker 沙箱支撑百万 token Agentic RL
 
 ### Google
 - [Pathways](./google/pathways/) — 异步分布式数据流运行时；TPU pod 规模单控制器
