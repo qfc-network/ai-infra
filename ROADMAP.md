@@ -2,7 +2,7 @@
 
 ## Context
 
-The repo currently has 96 topics plus 3 guides across training, inference, architectures, open-source infra, and multimodal. The goal is to systematically fill the gaps — topics that are either directly referenced by existing write-ups or are widely used in practice but not yet covered. Each new entry follows the established template: ~2,000–2,500 words, 1–2 equations, one Engineering Tradeoffs table (4–6 rows), both `en.md` and `zh.md`, and an update to the root `README.md` / `README.zh.md` index.
+The repo currently has 95 topics plus 3 guides across training, inference, architectures, open-source infra, and multimodal. The count excludes the bilingual `_template/` pair. The goal is to systematically fill the gaps — topics that are either directly referenced by existing write-ups or are widely used in practice but not yet covered. Each new entry follows the established template: ~2,000–2,500 words, 1–2 equations, one Engineering Tradeoffs table (4–6 rows), both `en.md` and `zh.md`, and an update to the root `README.md` / `README.zh.md` index.
 
 ---
 
@@ -32,6 +32,14 @@ All three entries complete: DeepSpeed (Microsoft), Cutlass (NVIDIA), TensorRT-LL
 |---|-------|-----------|--------|
 | 17 | Inference-Time Scaling — Test-Time Compute | `foundational/inference-time-scaling/` | ✓ done |
 | 18 | DeepSeek-V2 | `deepseek/v2/` | ✓ done |
+
+### Out-of-Cycle Release Ingestion — Kimi K3 Infrastructure ✓ (added July 2026)
+
+| Topic | Directory | Status |
+|---|---|---|
+| Kimi K3 infrastructure stack — MoonEP, FlashKDA, AgentENV | `moonshot/kimi-k3-infra/` | ✓ done |
+
+This synthesis connects model architecture to three released infrastructure layers: balanced expert-parallel communication, architecture-specific GPU kernels, and stateful microVM sandboxes for agentic RL. It was added out of roadmap order because all three codebases and the K3 technical report were released together.
 
 ---
 

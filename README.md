@@ -109,6 +109,7 @@ Every paper gets both an English (`en.md`) and Chinese (`zh.md`) write-up using 
 
 ### Moonshot
 - [Mooncake](./moonshot/mooncake/) — KVCache-centric disaggregated inference; PD-disaggregation; cache pool
+- [Kimi K3 Infrastructure Stack](./moonshot/kimi-k3-infra/) — MoonEP balanced expert parallelism; FlashKDA CUTLASS kernels; AgentENV Firecracker sandboxes for million-token agentic RL
 
 ### Google
 - [Pathways](./google/pathways/) — async distributed dataflow runtime; single-controller at TPU pod scale
