@@ -5,6 +5,10 @@
 
 [中文版 README](./README.zh.md)
 
+> **Companion repo:** [qfc-network/ai-infra-cheatsheet](https://github.com/qfc-network/ai-infra-cheatsheet) —
+> side-by-side hardware spec tables (NVIDIA, AMD, Apple) plus VRAM and KV cache
+> sizing math. This repo explains the mechanisms; that one holds the numbers.
+
 ## Scope
 
 This repo collects engineering-focused analyses of papers and open-source releases covering:

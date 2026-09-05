@@ -5,6 +5,10 @@
 
 [English README](./README.md)
 
+> **姊妹项目：**[qfc-network/ai-infra-cheatsheet](https://github.com/qfc-network/ai-infra-cheatsheet) ——
+> 硬件规格对照表（NVIDIA / AMD / Apple）以及显存与 KV cache 换算。
+> 本仓库讲原理，那边管数字。
+
 ## 范围
 
 本仓库收集以工程视角切入的论文与开源项目分析，覆盖：
